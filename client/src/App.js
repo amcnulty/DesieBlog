@@ -10,12 +10,9 @@ import Books from './routes/books/books';
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia at dolores veniam maiores quae, laboriosam consectetur, autem optio molestiae vitae odit ipsa quia. Nisi fugiat repudiandae maiores distinctio? Commodi cum beatae autem ab placeat necessitatibus alias accusantium explicabo esse iste!
-        </p>
-        <SiteHeader/>
-        <Router>
+      <Router>
+        <div className="App mx-md-5">
+          <SiteHeader/>
           <Switch>
             <Route
               exact
@@ -28,10 +25,10 @@ class App extends Component {
               component={Books}
             />
           </Switch>
-        </Router>
-        <SiteFooter/>
-      </div>
-    );
+          <SiteFooter/>
+        </div>
+      </Router>
+    )
   }
 }
 

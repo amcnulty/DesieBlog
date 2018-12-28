@@ -1,0 +1,10 @@
+.HeaderSearch #searchInput {
+  font-family: inherit;
+  border: none;
+  border-bottom: 1px solid #EBBDA5; }
+
+.HeaderSearch .db-button {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: #6D7578; }

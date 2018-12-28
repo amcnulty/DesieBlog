@@ -1,0 +1,16 @@
+.SiteHeader {
+  display: flex;
+  align-items: center;
+  font-size: 18px;
+  margin: 0px;
+  margin-top: 20px; }
+  .SiteHeader nav {
+    display: flex;
+    flex-basis: 30%;
+    margin-right: auto;
+    justify-content: space-between; }
+  .SiteHeader nav a {
+    text-decoration: none;
+    padding-bottom: 5px;
+    color: inherit;
+    border-bottom: 2px solid #EBBDA5; }
