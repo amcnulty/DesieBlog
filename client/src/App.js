@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import logo from './logo.svg';
 import './App.css';
 import SiteHeader from './header/header';
 import SiteFooter from './footer/footer';
@@ -11,7 +10,7 @@ class App extends Component {
   render() {
     return (
       <Router>
-        <div className="App mx-md-5">
+        <div className="App">
           <SiteHeader/>
           <Switch>
             <Route
