@@ -5,28 +5,22 @@
   left: 0;
   color: #F9F6ED;
   background-color: #8A9E9C; }
-
-.SiteFooter .subscribe {
-  display: flex;
-  align-items: center; }
-
-.SiteFooter .subscribe p {
-  margin: 10px 0px; }
-
-.SiteFooter #subscribeForm {
-  display: flex;
-  align-items: center;
-  margin-left: auto; }
-
-.SiteFooter #subscribeForm input {
-  font-family: inherit;
-  height: 30px; }
-
-.SiteFooter #subscribeForm button {
-  height: 24px; }
-
-.SiteFooter #subscribeForm button {
-  font-family: inherit;
-  height: 30px;
-  border: none;
-  cursor: pointer; }
+  .SiteFooter .subscribe {
+    display: flex;
+    align-items: center; }
+  .SiteFooter .subscribe p {
+    margin: 10px 0px; }
+  .SiteFooter #subscribeForm {
+    display: flex;
+    align-items: center;
+    margin-left: auto; }
+    .SiteFooter #subscribeForm input {
+      font-family: inherit;
+      height: 30px; }
+    .SiteFooter #subscribeForm button {
+      height: 24px; }
+  .SiteFooter #subscribeForm button {
+    font-family: inherit;
+    height: 30px;
+    border: none;
+    cursor: pointer; }

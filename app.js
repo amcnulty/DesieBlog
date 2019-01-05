@@ -3,9 +3,11 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+const mongoose = require('./db/connection');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
+var api = require('./routes/api');
 
 var app = express();
 
@@ -21,6 +23,7 @@ app.use(express.static('client/build'));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+app.use('/api', api);
 
 app.get("*", function(req, res) {
   res.sendFile(path.join(__dirname, "./client/build/index.html"));
