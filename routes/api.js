@@ -7,7 +7,7 @@ router.get('/books', (req, res) => {
   Article.find((err, articles) => {
     if (err) {
       console.log(err);
-      res.status(500).send();
+      return res.status(500).send();
     }
     return res.status(200).send(articles);
   });
