@@ -13,7 +13,7 @@ class Books extends Component {
   }
 
   componentDidMount() {
-    axios.get('/api/articles/Book')
+    axios.get('/api/articles?kind=Book')
     .then(res => {
       this.setState({
         articles: res.data

@@ -35,6 +35,10 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/api', api);
 
+app.get('/docs', (req, res) => {
+  res.sendFile(path.join(__dirname, 'redoc.html'));
+});
+
 app.get("*", function(req, res) {
   res.sendFile(path.join(__dirname, "./client/build/index.html"));
 });
