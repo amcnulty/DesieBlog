@@ -1,9 +1,15 @@
 const mongoose = require('mongoose');
 
 let articleSchema = mongoose.Schema({
-  articlePath: String,
+  title: String,
+  urlTitle: String,
+  authors: [String],
+  path: String,
+  date: Date,
   thumbnailImage: String,
-  bannerText: String
+  bannerText: String,
+  bookImage: String,
+  body: String
 });
 
 const Article = mongoose.model('Article', articleSchema);

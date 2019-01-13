@@ -12,10 +12,9 @@ class Books extends Component {
     }
   }
 
-  componentWillMount() {
+  componentDidMount() {
     axios.get('/api/books')
     .then(res => {
-      console.log(res);
       this.setState({
         articles: res.data
       });
@@ -34,7 +33,7 @@ class Books extends Component {
               this.state.articles.map(article => {
                 return (
                   <ArticleThumbnail
-                    url={article.articlePath}
+                    url={article.path}
                     thumbnailImage={article.thumbnailImage}
                     bannerText={article.bannerText}
                   ></ArticleThumbnail>

@@ -4,7 +4,7 @@
  * Copyright 2011-2018 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
-@import url("https://fonts.googleapis.com/css?family=Handlee");
+@import url("https://fonts.googleapis.com/css?family=Tillana:400,500,600,700,800");
 :root {
   --blue: #007bff;
   --indigo: #6610f2;
@@ -6923,8 +6923,7 @@ a.text-dark:hover, a.text-dark:focus {
     border-color: #dee2e6; } }
 
 body {
-  font-family: 'Handlee', cursive;
-  font-weight: 700;
+  font-family: 'Tillana', cursive;
   font-size: 18px;
   line-height: 150%;
   color: #6D7578;

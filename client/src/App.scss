@@ -1,10 +1,10 @@
 @import 'bootstrap/scss/bootstrap.scss';
 @import url('https://fonts.googleapis.com/css?family=Handlee');
+
 @import './sass/_variables.sass';
 
 body {
   font-family: 'Handlee', cursive;
-  font-weight: 700;
   font-size: 18px;
   line-height: 150%;
   color: $textColor;

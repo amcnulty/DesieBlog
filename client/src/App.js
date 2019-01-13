@@ -5,6 +5,7 @@ import SiteHeader from './header/header';
 import SiteFooter from './footer/footer';
 import Home from './routes/home/home';
 import Books from './routes/books/books';
+import BookArticle from './routes/books/bookArticle/bookArticle';
 import Portal from './routes/cms/portal/portal';
 import Dashboard from './routes/cms/dashboard/dashboard';
 
@@ -26,6 +27,10 @@ class App extends Component {
               exact
               path="/books"
               component={Books}
+            />
+            <Route
+              path="/books/:path"
+              component={BookArticle}
             />
             <Route
               exact
