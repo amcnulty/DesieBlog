@@ -35,8 +35,11 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/api', api);
 
-app.get('/docs', (req, res) => {
-  res.sendFile(path.join(__dirname, 'redoc.html'));
+app.get('/docs', (req, res, next) => {
+  if (process.env.NODE_ENV === 'development') {
+    res.sendFile(path.join(__dirname, 'redoc.html'));
+  }
+  else next();
 });
 
 app.get("*", function(req, res) {
