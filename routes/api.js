@@ -139,9 +139,9 @@ router.get('/articles', (req, res) => {
  *               items:
  *                 type: string
  */
-router.get('/books/:path', (req, res) => {
+router.get('/books/:title-url', (req, res) => {
   Article.findOne({
-    urlTitle: req.params.path
+    urlTitle: req.params.title-url
   }, (err, article) => {
     if (err) {
       console.log(err);
@@ -149,6 +149,29 @@ router.get('/books/:path', (req, res) => {
     }
     if (!article) return res.status(404).send();
     return res.status(200).send(article);
+  });
+});
+
+router.get('/article-data/books/:id', (req, res) => {
+  Article.findById(req.params.id, (err, article) => {
+    if (err) {
+      console.log(err);
+      return res.status(500).send();
+    }
+    if (!article) return res.status(404).send();
+    return res.status(200).send(article);
+  });
+});
+
+router.post('/books/create-article', (req, res) => {
+  const newBookArticle = new BookArticle(req.body);
+
+  newBookArticle.save(err => {
+    if (err) {
+      console.log(err);
+      res.status(500).send();
+    }
+    return res.status(200).send();
   });
 });
 
