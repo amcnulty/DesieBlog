@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { withRouter } from 'react-router-dom';
 import './portal.css';
 import { API } from '../../../util/api';
 

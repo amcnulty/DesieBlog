@@ -38,7 +38,6 @@ class App extends Component {
               component={Portal}
             />
             <Route
-              exact
               path="/cms/dashboard"
               component={Dashboard}
             />

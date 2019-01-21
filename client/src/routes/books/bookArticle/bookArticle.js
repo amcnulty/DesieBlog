@@ -33,7 +33,7 @@ class BookArticle extends Component {
             return <h4>{author}</h4>
           })}
           <h3>{this.state.article.date}</h3>
-          <img src={this.state.article.bookImage}/>
+          <img src={this.state.article.bookImage} alt="Article Thumbnail"/>
           <div dangerouslySetInnerHTML={{ __html: this.state.article.body}}></div>
         </div>
       ) : (
