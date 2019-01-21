@@ -40,7 +40,7 @@ class Dashboard extends Component {
     return this.state.user ? (
       <div className="Dashboard container-fluid">
         <div className="row">
-          <DashboardNav match={this.props.match}/>
+          <DashboardNav/>
           <div className="col-lg-10 col-md-9 col-12">
             <Route path={`${this.props.match.path}/books`} component={ManageBooks}/>
             <Route path={`${this.props.match.path}/recipes`} component={ManageRecipes}/>

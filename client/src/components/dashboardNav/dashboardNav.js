@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import { Nav, NavItem, Collapse, Navbar, NavbarToggler, NavbarBrand, NavLink, UncontrolledDropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
 import './dashboardNav.css';
 
@@ -17,8 +17,11 @@ class DashboardNav extends Component {
     this.setState({[key]: !this.state[key]});
   }
 
-  render() {
+  checkIfActive = path => {
+    return this.props.location.pathname === path;
+  }
 
+  render() {
     return (
       <React.Fragment>
         <div className="DashboardNavDesktop col-lg-2 col-md-3 d-md-block d-none p-0">
@@ -30,33 +33,33 @@ class DashboardNav extends Component {
             </Link>
             <a href="/" onClick={(e) => {e.preventDefault(); this.toggle('manageArticlesIsOpen');}}>
               <NavItem>
-              <i className="fas fa-pencil-alt"></i> Manage Articles
+                <i className="fas fa-pencil-alt"></i> Manage Articles
               </NavItem>
             </a>
             <Collapse isOpen={this.state.manageArticlesIsOpen}>
               <Link to={`${this.props.match.url}/books`}>
-                <NavItem>
+                <NavItem className={this.checkIfActive('/cms/dashboard/books') ? 'active' : 'inactive'}>
                   Books
                 </NavItem>
               </Link>
               <Link to={`${this.props.match.url}/wine`}>
-                <NavItem>
+                <NavItem className={this.checkIfActive('/cms/dashboard/wine') ? 'active' : 'inactive'}>
                   Wine
                 </NavItem>
               </Link>
               <Link to={`${this.props.match.url}/travel`}>
-                <NavItem>
+                <NavItem className={this.checkIfActive('/cms/dashboard/travel') ? 'active' : 'inactive'}>
                   Travel
                 </NavItem>
               </Link>
               <Link to={`${this.props.match.url}/recipes`}>
-                <NavItem>
+                <NavItem className={this.checkIfActive('/cms/dashboard/recipes') ? 'active' : 'inactive'}>
                   Recipes
                 </NavItem>
               </Link>
             </Collapse>
             <Link to={`${this.props.match.url}/account-settings`}>
-              <NavItem>
+              <NavItem className={this.checkIfActive('/cms/dashboard/account-settings') ? 'active' : 'inactive'}>
                 <i className="fas fa-cog"></i> Account Settings
               </NavItem>
             </Link>
@@ -100,4 +103,4 @@ class DashboardNav extends Component {
 
 }
 
-export default DashboardNav;
+export default withRouter(DashboardNav);

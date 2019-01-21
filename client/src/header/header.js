@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import HeaderSearch from './headerSearch/headerSeach';
 import './header.css';
 
@@ -9,16 +9,20 @@ class SiteHeader extends Component {
 
   }
 
+  checkIfActive = path => {
+    return this.props.location.pathname === path;
+  }
+
   render() {
     
     return (
       <header className="SiteHeader">
         <div className="mx-md-5">
           <nav className="d-flex">
-            <Link to="/recipes">Recipes</Link>
-            <Link to="/wine">Wine</Link>
-            <Link to="/travel">Travel</Link>
-            <Link to="/books">Books</Link>
+            <Link className={this.checkIfActive('/recipes') ? 'active' : ''} to="/recipes">Recipes</Link>
+            <Link className={this.checkIfActive('/wine') ? 'active' : ''} to="/wine">Wine</Link>
+            <Link className={this.checkIfActive('/travel') ? 'active' : ''} to="/travel">Travel</Link>
+            <Link className={this.checkIfActive('/books') ? 'active' : ''} to="/books">Books</Link>
           </nav>
           <HeaderSearch/>
         </div>
@@ -27,4 +31,4 @@ class SiteHeader extends Component {
   }
 }
 
-export default SiteHeader;
+export default withRouter(SiteHeader);
