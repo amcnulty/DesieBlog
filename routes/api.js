@@ -139,9 +139,9 @@ router.get('/articles', (req, res) => {
  *               items:
  *                 type: string
  */
-router.get('/books/:title-url', (req, res) => {
+router.get('/books/:urlTitle', (req, res) => {
   Article.findOne({
-    urlTitle: req.params.title-url
+    urlTitle: req.params.urlTitle
   }, (err, article) => {
     if (err) {
       console.log(err);

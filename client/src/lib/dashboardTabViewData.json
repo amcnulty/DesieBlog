@@ -1,0 +1,91 @@
+{
+  "Books": {
+    "type": "book",
+    "relativePath": "/books/",
+    "fields": [
+      {
+        "name": "title",
+        "value": "title"
+      },
+      {
+        "name": "urlTitle",
+        "value": "urlTitle"
+      },
+      {
+        "name": "path",
+        "value": "path"
+      },
+      {
+        "name": "thumbnailImage",
+        "value": "thumbnailImage"
+      },
+      {
+        "name": "bannerText",
+        "value": "bannerText"
+      },
+      {
+        "name": "body",
+        "value": "body"
+      },
+      {
+        "name": "authors",
+        "value": "authorsInput"
+      },
+      {
+        "name": "bookImage",
+        "value": "bookImageInput"
+      }
+    ],
+    "inputs": [
+      {
+        "label": "Authors",
+        "id": "authorsInput",
+        "type": "chip"
+      },
+      {
+        "label": "Book Image",
+        "id": "bookImageInput",
+        "type": "text"
+      }
+    ]
+  },
+  "Recipes": {
+    "type": "recipes",
+    "relativePath": "/recipes/",
+    "fields": [
+      "title",
+      "urlTitle",
+      "path",
+      "thumbnailImage",
+      "bannerText",
+      "body"
+    ]
+
+  },
+  "Travel": {
+    "type": "travel",
+    "relativePath": "/travel/",
+    "fields": [
+      "title",
+      "urlTitle",
+      "path",
+      "thumbnailImage",
+      "bannerText",
+      "body"
+    ]
+
+  },
+  "Wine": {
+    "type": "wine",
+    "relativePath": "/wine/",
+    "fields": [
+      "title",
+      "urlTitle",
+      "path",
+      "thumbnailImage",
+      "bannerText",
+      "body"
+    ]
+
+  }
+}

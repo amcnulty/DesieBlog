@@ -41,7 +41,7 @@ class Dashboard extends Component {
       <div className="Dashboard container-fluid">
         <div className="row">
           <DashboardNav/>
-          <div className="col-lg-10 col-md-9 col-12">
+          <div className="col-lg-10 col-md-9 col-12 rightContent">
             <Route path={`${this.props.match.path}/books`} component={ManageBooks}/>
             <Route path={`${this.props.match.path}/recipes`} component={ManageRecipes}/>
             <Route path={`${this.props.match.path}/travel`} component={ManageTravel}/>
