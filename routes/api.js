@@ -111,6 +111,35 @@ router.get('/articles', (req, res) => {
     });
   }
 });
+
+router.post('/articles/adjacent', (req, res) => {
+  const adjacentArticles = {
+    previous: {},
+    next: {}
+  }
+  Article.find({
+    kind: req.body.kind
+  }, (err, articles) => {
+    if (err) {
+      console.log(err);
+      return res.status(500).send();
+    }
+    if (!articles) res.status(404).send();
+    let currentArticleIndex;
+    articles.find((article, index) => {
+      if (article._id.toString() === req.body.currentArticle._id) {
+        currentArticleIndex = index;
+        return true;
+      }
+      else return false;
+    });
+    if (currentArticleIndex > 0) adjacentArticles.previous = articles[currentArticleIndex - 1];
+    else adjacentArticles.previous = articles[articles.length - 1];
+    if (currentArticleIndex < articles.length - 1) adjacentArticles.next = articles[currentArticleIndex + 1];
+    else adjacentArticles.next = articles[0];
+    return res.status(200).send(adjacentArticles);
+  });
+});
 /**
  * @swagger
  * /list:

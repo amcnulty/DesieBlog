@@ -3,6 +3,25 @@ import axios from 'axios';
  * The API utility makes api callouts simplified by not needing to worry about the endpoints.
  */
 export const API = {
+
+  /*
+   *          !!##########################!!
+   *          !!                          !!
+   *          !!        Articles          !!
+   *          !!                          !!
+   *          !!##########################!!
+   */
+
+  findAdjacentArticles: (data, callback) => {
+    axios.post('/api/articles/adjacent', data)
+    .then(res => {
+      callback(null, res);
+    })
+    .catch(err => {
+      callback(err, err.response.status);
+    });
+  },
+
   /*
    *          !!##########################!!
    *          !!                          !!
@@ -45,6 +64,7 @@ export const API = {
    *          !!                          !!
    *          !!##########################!!
    */
+
   /**
    * Logs in a user.
    * @param data The body of the request.

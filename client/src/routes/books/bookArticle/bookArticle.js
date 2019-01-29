@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Row, Col } from 'reactstrap';
 import axios from 'axios';
 import ArticleNavigator from '../../../components/articleNavigator/ArticleNavigator';
+import { API } from '../../../util/api';
 import './bookArticle.css';
 
 class BookArticle extends Component {
@@ -12,9 +13,22 @@ class BookArticle extends Component {
   }
   
   componentDidMount() {
-    const { path }  = this.props.match.params;
+    const { path } = this.props.match.params;
+    let { url } = this.props.match;
+    this.populateArticle(path);
+    const listener = this.props.history.listen(() => {
+      if (url !== this.props.history.location.pathname) {
+        this.populateArticle(this.props.history.location.pathname.replace('/books/', ''));
+        url = this.props.history.location.pathname;
+      }
+    });
+    this.setState({listener: listener});
+  }
+  
+  populateArticle(path) {
     axios.get('/api/books/' + path)
     .then(res => {
+      this.findAdjacentArticles(res.data);
       this.setState({
         article: res.data
       });
@@ -24,13 +38,29 @@ class BookArticle extends Component {
     });
   }
 
+  componentWillUnmount() {
+    this.state.listener();
+  }
+
+  findAdjacentArticles(article) {
+    API.findAdjacentArticles({
+      kind: 'Book',
+      currentArticle: article
+    }, (err, res) => {
+      if (err) console.log(err);
+      else this.setState({adjacentArticles: res.data});
+    });
+  }
+
   render() {
 
     return (
       this.state.article ? (
         <div className="BookArticle mx-md-5 mx-3 my-5">
           <Row>
-            <ArticleNavigator/>
+            <Col>
+              { !!this.state.adjacentArticles ? <ArticleNavigator articles={this.state.adjacentArticles}/> : ''}
+            </Col>
           </Row>
           <Row>
             <Col className="articleContent" md="8" lg="9" xl="10">
@@ -50,7 +80,7 @@ class BookArticle extends Component {
               </div>
               <div dangerouslySetInnerHTML={{ __html: this.state.article.body}}></div>
             </Col>
-            <Col className="adSection" md="4" lg="3" xl="2"></Col>
+            <Col md="4" lg="3" xl="2"></Col>
           </Row>
         </div>
       ) : (
