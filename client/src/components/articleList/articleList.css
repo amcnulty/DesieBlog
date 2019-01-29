@@ -1,0 +1,7 @@
+.ArticleList h1 {
+  text-align: center; }
+
+.ArticleList .list {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap; }

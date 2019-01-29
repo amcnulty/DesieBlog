@@ -17,7 +17,7 @@ class SiteHeader extends Component {
     
     return (
       <header className="SiteHeader">
-        <div className="mx-md-5">
+        <div className="mx-md-5 mx-3">
           <nav className="d-flex">
             <Link className={this.checkIfActive('/recipes') ? 'active' : ''} to="/recipes">Recipes</Link>
             <Link className={this.checkIfActive('/wine') ? 'active' : ''} to="/wine">Wine</Link>

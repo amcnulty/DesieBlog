@@ -1,2 +1,2 @@
-.BookArticle h1 {
-  color: green; }
+.BookArticle .bookImage {
+  max-height: 300px; }

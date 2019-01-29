@@ -31,12 +31,13 @@ class CreateArticle extends Component {
   
   saveArticle = () => {
     const commandMap = {
-      book: API.creatBookArticle,
+      book: API.createBookArticle,
       recipes: '',
       travel: '',
       wine: ''
     }
     const req = {};
+    req.author = this.props.articleAuthor;
     this.props.articleData.fields.forEach(field => {
       req[field.name] = this.state[field.value];
     });

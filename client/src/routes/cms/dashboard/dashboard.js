@@ -15,17 +15,17 @@ class Dashboard extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      user: true
+      user: false
     }
-    // API.userPresent((err, res) => {
-    //   if (err) {
-    //     if (res === 401) {
-    //       this.props.history.push('/cms');
-    //     }
-    //     console.log(err);
-    //   }
-    //   this.setState({user: res});
-    // });
+    API.userPresent((err, res) => {
+      if (err) {
+        if (res === 401) {
+          this.props.history.push('/cms');
+        }
+        console.log(err);
+      }
+      this.setState({user: res});
+    });
   }
 
   componentDidMount() {}
@@ -42,7 +42,7 @@ class Dashboard extends Component {
         <div className="row">
           <DashboardNav/>
           <div className="col-lg-10 col-md-9 col-12 rightContent">
-            <Route path={`${this.props.match.path}/books`} component={ManageBooks}/>
+            <Route path={`${this.props.match.path}/books`} render={props => <ManageBooks user={this.state.user} />}/>
             <Route path={`${this.props.match.path}/recipes`} component={ManageRecipes}/>
             <Route path={`${this.props.match.path}/travel`} component={ManageTravel}/>
             <Route path={`${this.props.match.path}/wine`} component={ManageWine}/>

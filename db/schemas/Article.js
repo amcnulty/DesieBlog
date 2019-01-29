@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 const options = { discriminatorKey: 'kind' };
 
 const articleSchema = mongoose.Schema({
+  author: String,
   title: String,
   urlTitle: String,
   path: String,

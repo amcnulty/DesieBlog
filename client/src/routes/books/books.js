@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import ArticleThumbnail from '../../components/articleThumbnail/articleThumbnail';
+import ArticleList from '../../components/articleList/articleList';
 import axios from 'axios';
 import './books.css';
 
@@ -27,19 +27,8 @@ class Books extends Component {
   render() {
     return (
       <div className="Books">
-        <div className="mx-md-5">
-          <h1 className="desieBlogLogo">Desie Blog</h1>
-            {
-              this.state.articles.map(article => {
-                return (
-                  <ArticleThumbnail
-                    url={article.path}
-                    thumbnailImage={article.thumbnailImage}
-                    bannerText={article.bannerText}
-                  ></ArticleThumbnail>
-                )
-              })
-            }
+        <div className="mx-md-5 mx-3">
+          <ArticleList articles={this.state.articles}/>
         </div>
       </div>
     )

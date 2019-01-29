@@ -1,30 +1,20 @@
-import React, { Component } from 'react';
+import React from 'react';
 import './articleThumbnail.css';
 
-class ArticleThumbnail extends Component {
-  
-  componentDidMount() {
+const ArticleThumbnail = props => {
+  const toBackgroundUrl = url => `url("${url}")`;
 
-  }
-
-  toBackgroundUrl(url) {
-    return `url("${url}")`;
-  }
-
-  render() {
-
-    return (
-      <div className="ArticleThumbnail">
-        <a href={this.props.url}>
-          <div className="thumbnail" style={{backgroundImage: this.toBackgroundUrl(this.props.thumbnailImage)}}>
-            <div className="banner" title={this.props.bannerText}>
-              {this.props.bannerText}
-            </div>
+  return (
+    <div className="ArticleThumbnail">
+      <a href={props.url}>
+        <div className="thumbnail my-4 mx-3" style={{backgroundImage: toBackgroundUrl(props.thumbnailImage)}}>
+          <div className="banner" title={props.bannerText}>
+            {props.bannerText}
           </div>
-        </a>
-      </div>
-    )
-  }
+        </div>
+      </a>
+    </div>
+  )
 }
 
 export default ArticleThumbnail;

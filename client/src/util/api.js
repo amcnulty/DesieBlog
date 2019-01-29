@@ -16,7 +16,7 @@ export const API = {
    * @param data The book article data.
    * @param callback The response from the request.
    */
-  creatBookArticle: (data, callback) => {
+  createBookArticle: (data, callback) => {
     axios.post('/api/books/create-article', data)
     .then(res => {
       callback(null, res);
