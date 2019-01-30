@@ -1,15 +1,19 @@
-import React, {Component} from 'react';
+import React from 'react';
+import DashboardTabView from '../../../../components/dashboardTabView/dashboardTabView';
+import CreateArticle from '../../../../components/createArticle/createArticle';
+import articleData from '../../../../lib/dashboardTabViewData.json';
 import './manageRecipes.css';
 
-class ManageRecipes extends Component {
-
-  render() {
-    return (
-      <div className="ManageRecipes">
-        <h1>Manage Recipes Works!</h1>
-      </div>
-    )
-  }
+const ManageRecipes = props => {
+  return (
+    <div className="ManageBooks">
+      <DashboardTabView>
+        <CreateArticle articleAuthor={props.user.data.displayName} articleData={articleData.Recipes}/>
+        <span>Tab content 2</span>
+        <span>Tab content 3</span>
+      </DashboardTabView>
+    </div>
+  )
 }
 
 export default ManageRecipes;

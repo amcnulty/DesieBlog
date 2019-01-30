@@ -3,6 +3,8 @@ const mongoose = require('../db/connection');
 const router = express.Router();
 const Article = require('../db/schemas/Article');
 const BookArticle = require('../db/schemas/BookArticle');
+const RecipeArticle = require('../db/schemas/RecipeArticle');
+const TravelArticle = require('../db/schemas/TravelArticle');
 const WineArticle = require('../db/schemas/WineArticle');
 const swaggerJSDoc = require('swagger-jsdoc');
 const path = require('path');
@@ -168,7 +170,7 @@ router.post('/articles/adjacent', (req, res) => {
  *               items:
  *                 type: string
  */
-router.get('/books/:urlTitle', (req, res) => {
+router.get('/article-data/:urlTitle', (req, res) => {
   Article.findOne({
     urlTitle: req.params.urlTitle
   }, (err, article) => {
@@ -181,7 +183,7 @@ router.get('/books/:urlTitle', (req, res) => {
   });
 });
 
-router.get('/article-data/books/:id', (req, res) => {
+router.get('/article-data/:id', (req, res) => {
   Article.findById(req.params.id, (err, article) => {
     if (err) {
       console.log(err);
@@ -196,6 +198,42 @@ router.post('/books/create-article', (req, res) => {
   const newBookArticle = new BookArticle(req.body);
 
   newBookArticle.save(err => {
+    if (err) {
+      console.log(err);
+      res.status(500).send();
+    }
+    return res.status(200).send();
+  });
+});
+
+router.post('/recipes/create-article', (req, res) => {
+  const newRecipeArticle = new RecipeArticle(req.body);
+
+  newRecipeArticle.save(err => {
+    if (err) {
+      console.log(err);
+      res.status(500).send();
+    }
+    return res.status(200).send();
+  });
+});
+
+router.post('/travel/create-article', (req, res) => {
+  const newTravelArticle = new TravelArticle(req.body);
+
+  newTravelArticle.save(err => {
+    if (err) {
+      console.log(err);
+      res.status(500).send();
+    }
+    return res.status(200).send();
+  });
+});
+
+router.post('/wine/create-article', (req, res) => {
+  const newWineArticle = new WineArticle(req.body);
+
+  newWineArticle.save(err => {
     if (err) {
       console.log(err);
       res.status(500).send();

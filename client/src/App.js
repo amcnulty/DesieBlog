@@ -6,6 +6,12 @@ import SiteFooter from './footer/footer';
 import Home from './routes/home/home';
 import Books from './routes/books/books';
 import BookArticle from './routes/books/bookArticle/bookArticle';
+import Recipes from './routes/recipes/recipes';
+import RecipeArticle from './routes/recipes/recipeArticle/recipeArticle';
+import Travel from './routes/travel/travel';
+import TravelArticle from './routes/travel/travelArticle/travelArticle';
+import Wine from './routes/wine/wine';
+import WineArticle from './routes/wine/wineArticle/wineArticle';
 import Portal from './routes/cms/portal/portal';
 import Dashboard from './routes/cms/dashboard/dashboard';
 
@@ -31,6 +37,36 @@ class App extends Component {
             <Route
               path="/books/:path"
               component={BookArticle}
+            />
+            <Route
+              exact
+              path="/recipes"
+              component={Recipes}
+            />
+            <Route
+              exact
+              path="/recipes/:path"
+              component={RecipeArticle}
+            />
+            <Route
+              exact
+              path="/travel"
+              component={Travel}
+            />
+            <Route
+              exact
+              path="/travel/:path"
+              component={TravelArticle}
+            />
+            <Route
+              exact
+              path="/wine"
+              component={Wine}
+            />
+            <Route
+              exact
+              path="/wine/:path"
+              component={WineArticle}
             />
             <Route
               exact

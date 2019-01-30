@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import ArticleList from '../../components/articleList/articleList';
 import { API } from '../../util/api';
-import './books.css';
+import './recipes.css';
 
-class Books extends Component {
+class Recipes extends Component {
 
   constructor(props) {
     super(props);
@@ -13,7 +13,7 @@ class Books extends Component {
   }
 
   componentDidMount() {
-    API.getArticlesByKind('Book', (err, res) => {
+    API.getArticlesByKind('Recipe', (err, res) => {
       if (err) console.log(err);
       else {
         this.setState({
@@ -25,13 +25,14 @@ class Books extends Component {
 
   render() {
     return (
-      <div className="Books">
+      <div className="Recipes">
         <div className="mx-md-5 mx-3">
           <ArticleList articles={this.state.articles}/>
         </div>
       </div>
     )
   }
+
 }
 
-export default Books;
+export default Recipes;

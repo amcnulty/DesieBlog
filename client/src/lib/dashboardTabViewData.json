@@ -53,39 +53,123 @@
     "type": "recipes",
     "relativePath": "/recipes/",
     "fields": [
-      "title",
-      "urlTitle",
-      "path",
-      "thumbnailImage",
-      "bannerText",
-      "body"
+      {
+        "name": "title",
+        "value": "title"
+      },
+      {
+        "name": "urlTitle",
+        "value": "urlTitle"
+      },
+      {
+        "name": "path",
+        "value": "path"
+      },
+      {
+        "name": "thumbnailImage",
+        "value": "thumbnailImage"
+      },
+      {
+        "name": "bannerText",
+        "value": "bannerText"
+      },
+      {
+        "name": "body",
+        "value": "body"
+      },
+      {
+        "name": "mainImage",
+        "value": "mainImageInput"
+      }
+    ],
+    "inputs": [
+      {
+        "label": "Main Image",
+        "id": "mainImageInput",
+        "type": "text"
+      }
     ]
-
   },
   "Travel": {
     "type": "travel",
     "relativePath": "/travel/",
     "fields": [
-      "title",
-      "urlTitle",
-      "path",
-      "thumbnailImage",
-      "bannerText",
-      "body"
+      {
+        "name": "title",
+        "value": "title"
+      },
+      {
+        "name": "urlTitle",
+        "value": "urlTitle"
+      },
+      {
+        "name": "path",
+        "value": "path"
+      },
+      {
+        "name": "thumbnailImage",
+        "value": "thumbnailImage"
+      },
+      {
+        "name": "bannerText",
+        "value": "bannerText"
+      },
+      {
+        "name": "body",
+        "value": "body"
+      },
+      {
+        "name": "mainImage",
+        "value": "mainImageInput"
+      }
+    ],
+    "inputs": [
+      {
+        "label": "Main Image",
+        "id": "mainImageInput",
+        "type": "text"
+      }
     ]
-
   },
   "Wine": {
     "type": "wine",
     "relativePath": "/wine/",
     "fields": [
-      "title",
-      "urlTitle",
-      "path",
-      "thumbnailImage",
-      "bannerText",
-      "body"
+      {
+        "name": "title",
+        "value": "title"
+      },
+      {
+        "name": "urlTitle",
+        "value": "urlTitle"
+      },
+      {
+        "name": "path",
+        "value": "path"
+      },
+      {
+        "name": "thumbnailImage",
+        "value": "thumbnailImage"
+      },
+      {
+        "name": "bannerText",
+        "value": "bannerText"
+      },
+      {
+        "name": "body",
+        "value": "body"
+      },
+      {
+        "name": "mainImage",
+        "value": "mainImageInput"
+      }
+    ],
+    "inputs": [
+      {
+        "label": "Main Image",
+        "id": "mainImageInput",
+        "type": "text"
+      }
     ]
-
   }
 }

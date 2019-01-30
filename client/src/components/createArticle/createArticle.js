@@ -32,9 +32,9 @@ class CreateArticle extends Component {
   saveArticle = () => {
     const commandMap = {
       book: API.createBookArticle,
-      recipes: '',
-      travel: '',
-      wine: ''
+      recipes: API.createRecipeArticle,
+      travel: API.createTravelArticle,
+      wine: API.createWineArticle
     }
     const req = {};
     req.author = this.props.articleAuthor;
@@ -64,7 +64,7 @@ class CreateArticle extends Component {
   }
 
   getPath = () => {
-    return '/books/'
+    return this.props.articleData.relativePath;
   }
 
   handleChange = e => {
@@ -137,7 +137,7 @@ class CreateArticle extends Component {
                 readOnly={true}
                 type="text"
                 value={this.state.path}
-                placeholder="/books/path-to-book"
+                placeholder={`${this.props.articleData.relativePath}path-to-article`}
               />
             </div>
             <div className="form-group">

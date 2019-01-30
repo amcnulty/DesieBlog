@@ -43,9 +43,9 @@ class Dashboard extends Component {
           <DashboardNav/>
           <div className="col-lg-10 col-md-9 col-12 rightContent">
             <Route path={`${this.props.match.path}/books`} render={props => <ManageBooks user={this.state.user} />}/>
-            <Route path={`${this.props.match.path}/recipes`} component={ManageRecipes}/>
-            <Route path={`${this.props.match.path}/travel`} component={ManageTravel}/>
-            <Route path={`${this.props.match.path}/wine`} component={ManageWine}/>
+            <Route path={`${this.props.match.path}/recipes`} render={props => <ManageRecipes user={this.state.user}/>} />
+            <Route path={`${this.props.match.path}/travel`} render={props => <ManageTravel user={this.state.user}/>} />
+            <Route path={`${this.props.match.path}/wine`} render={props => <ManageWine user={this.state.user}/>} />
             <Route path={`${this.props.match.path}/account-settings`} component={AccountSettings}/>
             <Route exact path={this.props.match.path} component={Overview}/>
           </div>

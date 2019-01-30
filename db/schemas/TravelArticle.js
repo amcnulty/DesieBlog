@@ -3,10 +3,10 @@ const Article = require('./Article');
 
 const options = { discriminatorKey: 'kind' };
 
-const WineArticleSchema = mongoose.Schema({
+const TravelArticleSchema = mongoose.Schema({
   mainImage: String
 }, options);
 
-const WineArticle = Article.discriminator('Wine', WineArticleSchema);
+const TravelArticle = Article.discriminator('Travel', TravelArticleSchema);
 
-module.exports = WineArticle;
+module.exports = TravelArticle;

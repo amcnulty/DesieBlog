@@ -7,6 +7,7 @@ const articleSchema = mongoose.Schema({
   title: String,
   urlTitle: String,
   path: String,
+  tags: [String],
   date: {
     type: Date,
     default: new Date()
