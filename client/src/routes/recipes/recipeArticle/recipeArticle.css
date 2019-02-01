@@ -1,0 +1,8 @@
+.RecipeArticle .articleImage {
+  max-height: 300px; }
+
+.RecipeArticle .articleBody img {
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  height: 300px; }

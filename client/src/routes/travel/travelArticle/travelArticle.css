@@ -1,0 +1,8 @@
+.TravelArticle .articleImage {
+  max-height: 300px; }
+
+.TravelArticle .articleBody img {
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  height: 300px; }

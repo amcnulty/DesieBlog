@@ -14,6 +14,7 @@ import Wine from './routes/wine/wine';
 import WineArticle from './routes/wine/wineArticle/wineArticle';
 import Portal from './routes/cms/portal/portal';
 import Dashboard from './routes/cms/dashboard/dashboard';
+import Preview from './routes/cms/preview/preview';
 
 class App extends Component {
   render() {
@@ -76,6 +77,10 @@ class App extends Component {
             <Route
               path="/cms/dashboard"
               component={Dashboard}
+            />
+            <Route
+              path="/cms/preview"
+              component={Preview}
             />
             <Route
               path="/"

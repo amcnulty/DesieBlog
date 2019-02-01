@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
-import {Card, CardBody, CardHeader} from 'reactstrap';
+import {Card, CardBody, CardHeader, Modal, ModalHeader, ModalBody, ModalFooter, Button } from 'reactstrap';
+import { Link } from 'react-router-dom';
 import ArticleThumbnail from '../../components/articleThumbnail/articleThumbnail';
 import { API } from '../../util/api';
 import ChipInput from 'material-ui-chip-input';
@@ -11,7 +12,6 @@ import './createArticle.css';
 
 class CreateArticle extends Component {
 
-  
   constructor(props) {
     super(props);
     this.state = {
@@ -21,12 +21,19 @@ class CreateArticle extends Component {
       thumbnailImage: '',
       bannerText: '',
       body: '',
+      modal: false,
       editorState: EditorState.createEmpty()
     }
     this.props.articleData.inputs.forEach(input => {
       if (input.type === 'chip') this.state[input.id] = [];
       else this.state[input.id] = '';
     });
+  }
+
+  previewArticle = () => {
+    localStorage.setItem('articleData', JSON.stringify(this.getArticleData()));
+    localStorage.setItem('type', this.props.articleData.type);
+    window.open('/cms/preview', '_blank');
   }
   
   saveArticle = () => {
@@ -45,8 +52,19 @@ class CreateArticle extends Component {
     console.log('req :', req);
     commandMap[this.props.articleData.type](req, (err, status) => {
       if (err) console.log(err);
-      if (status === 200); // Success!
+      console.log(status);
+      if (status === 200) this.toggle();
     });
+  }
+
+  getArticleData = () => {
+    const req = {};
+    req.author = this.props.articleAuthor;
+    this.props.articleData.fields.forEach(field => {
+      req[field.name] = this.state[field.value];
+    });
+    req.body = draftToHtml(convertToRaw(this.state.editorState.getCurrentContent()));
+    return req;
   }
 
   onEditorStateChange = (editorState) => {
@@ -60,6 +78,12 @@ class CreateArticle extends Component {
       urlTitle: e.target.value.replace(/\s+/g, '-').toLowerCase(),
       bannerText: e.target.value,
       path: this.getPath() + e.target.value.replace(/\s+/g, '-').toLowerCase()
+    });
+  }
+
+  toggle = () => {
+    this.setState({
+      modal: !this.state.modal
     });
   }
 
@@ -105,7 +129,7 @@ class CreateArticle extends Component {
   render() {
     const {editorState} = this.state;
     return (
-      <div className="CreateArticle">
+      <div className="CreateArticle mb-5">
         <div className="row align-items-center">
           <div className="col-lg-7 col-12">
             <h3>Article Thumbnail Information</h3>
@@ -191,8 +215,20 @@ class CreateArticle extends Component {
               value={(!!editorState) ? draftToHtml(convertToRaw(editorState.getCurrentContent())) : ''}
             />
           </div>
+          <div className="col-lg-7 col-12 d-flex">
+            <button className="btn btn-success w-50 mr-3" onClick={this.saveArticle}>Save Article</button>
+            <button className="btn btn-primary w-50" onClick={this.previewArticle}>Preview Article</button>
+          </div>
         </div>
-        <button onClick={this.saveArticle}>Save Article</button>
+        <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
+          <ModalHeader toggle={this.toggle}><i className="fas fa-exclamation-triangle"></i> Information</ModalHeader>
+          <ModalBody>
+            Article Save Successful!
+          </ModalBody>
+          <ModalFooter>
+            <Button color="primary" onClick={this.toggle}>OK</Button>{' '}
+          </ModalFooter>
+        </Modal>
       </div>
     )
   }

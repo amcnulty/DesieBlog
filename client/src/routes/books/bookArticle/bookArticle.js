@@ -12,16 +12,19 @@ class BookArticle extends Component {
   }
   
   componentDidMount() {
-    const { path } = this.props.match.params;
-    let { url } = this.props.match;
-    this.populateArticle(path);
-    const listener = this.props.history.listen(() => {
-      if (url !== this.props.history.location.pathname) {
-        this.populateArticle(this.props.history.location.pathname.replace('/books/', ''));
-        url = this.props.history.location.pathname;
-      }
-    });
-    this.setState({listener: listener});
+    if (this.props.preview) this.setState({ article: this.props.article });
+    else {
+      const { path } = this.props.match.params;
+      let { url } = this.props.match;
+      this.populateArticle(path);
+      const listener = this.props.history.listen(() => {
+        if (url !== this.props.history.location.pathname) {
+          this.populateArticle(this.props.history.location.pathname.replace('/books/', ''));
+          url = this.props.history.location.pathname;
+        }
+      });
+      this.setState({listener: listener});
+    }
   }
   
   populateArticle(path) {
@@ -76,7 +79,7 @@ class BookArticle extends Component {
                 </ol>
                 <img className="bookImage mb-5" src={this.state.article.bookImage} alt="Article Thumbnail"/>
               </div>
-              <div dangerouslySetInnerHTML={{ __html: this.state.article.body}}></div>
+              <div className="articleBody" dangerouslySetInnerHTML={{ __html: this.state.article.body}}></div>
             </Col>
             <Col md="4" lg="3" xl="2"></Col>
           </Row>

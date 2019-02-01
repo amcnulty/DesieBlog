@@ -12,16 +12,19 @@ class RecipeArticle extends Component {
   }
   
   componentDidMount() {
-    const { path } = this.props.match.params;
-    let { url } = this.props.match;
-    this.populateArticle(path);
-    const listener = this.props.history.listen(() => {
-      if (url !== this.props.history.location.pathname) {
-        this.populateArticle(this.props.history.location.pathname.replace('/recipes/', ''));
-        url = this.props.history.location.pathname;
-      }
-    });
-    this.setState({listener: listener});
+    if (this.props.preview) this.setState({ article: this.props.article });
+    else {
+      const { path } = this.props.match.params;
+      let { url } = this.props.match;
+      this.populateArticle(path);
+      const listener = this.props.history.listen(() => {
+        if (url !== this.props.history.location.pathname) {
+          this.populateArticle(this.props.history.location.pathname.replace('/recipes/', ''));
+          url = this.props.history.location.pathname;
+        }
+      });
+      this.setState({listener: listener});
+    }
   }
   
   populateArticle(path) {
@@ -69,7 +72,7 @@ class RecipeArticle extends Component {
                 <h1>{this.state.article.title}</h1>
                 <img className="articleImage mb-5" src={this.state.article.mainImage} alt="Article Thumbnail"/>
               </div>
-              <div dangerouslySetInnerHTML={{ __html: this.state.article.body}}></div>
+              <div className="articleBody" dangerouslySetInnerHTML={{ __html: this.state.article.body}}></div>
             </Col>
             <Col md="4" lg="3" xl="2"></Col>
           </Row>

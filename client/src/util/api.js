@@ -85,7 +85,7 @@ export const API = {
   createBookArticle: (data, callback) => {
     axios.post('/api/books/create-article', data)
     .then(res => {
-      callback(null, res);
+      callback(null, res.status);
     })
     .catch(err => {
       callback(err, err.response.status);
@@ -107,7 +107,7 @@ export const API = {
   createRecipeArticle: (data, callback) => {
     axios.post('/api/recipes/create-article', data)
     .then(res => {
-      callback(null, res);
+      callback(null, res.status);
     })
     .catch(err => {
       callback(err, err.response.status);
@@ -129,7 +129,7 @@ export const API = {
   createTravelArticle: (data, callback) => {
     axios.post('/api/travel/create-article', data)
     .then(res => {
-      callback(null, res);
+      callback(null, res.status);
     })
     .catch(err => {
       callback(err, err.response.status);
@@ -151,7 +151,7 @@ export const API = {
   createWineArticle: (data, callback) => {
     axios.post('/api/wine/create-article', data)
     .then(res => {
-      callback(null, res);
+      callback(null, res.status);
     })
     .catch(err => {
       callback(err, err.response.status);
