@@ -57,7 +57,7 @@ class BookArticle extends Component {
 
     return (
       this.state.article ? (
-        <div className="BookArticle mx-md-5 mx-3 my-5">
+        <div className="BookArticle mx-md-5 mx-4 my-5">
           <Row>
             <Col>
               { !!this.state.adjacentArticles ? <ArticleNavigator articles={this.state.adjacentArticles}/> : ''}
@@ -65,11 +65,7 @@ class BookArticle extends Component {
           </Row>
           <Row>
             <Col className="articleContent" md="8" lg="9" xl="10">
-              <p>
-                <small className="d-block"><strong>Written By:</strong> {this.state.article.author}</small>
-                <small><strong>Published On:</strong> {new Date(this.state.article.date).toDateString()}</small>
-              </p>
-              <div className="text-center">
+              <div className="ml-5">
                 <h1>{this.state.article.title}</h1>
                 <h3>Authors:</h3>
                 <ol className="list-unstyled">
@@ -79,7 +75,10 @@ class BookArticle extends Component {
                 </ol>
                 <img className="bookImage mb-5" src={this.state.article.bookImage} alt="Article Thumbnail"/>
               </div>
-              <div className="articleBody" dangerouslySetInnerHTML={{ __html: this.state.article.body}}></div>
+              <div className="articleBody ml-5" dangerouslySetInnerHTML={{ __html: this.state.article.body}}></div>
+              <p>
+                <small><strong>Published On:</strong> {new Date(this.state.article.date).toDateString()}</small>
+              </p>
             </Col>
             <Col md="4" lg="3" xl="2"></Col>
           </Row>

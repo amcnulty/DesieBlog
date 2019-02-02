@@ -6,7 +6,7 @@
   margin-top: 20px; }
   .SiteHeader div nav {
     display: flex;
-    flex-basis: 30%;
+    width: 300px;
     margin-right: auto;
     justify-content: space-between; }
   .SiteHeader div nav a {
@@ -15,4 +15,4 @@
     color: inherit;
     border-bottom: 2px solid #EBBDA5; }
     .SiteHeader div nav a.active {
-      border-bottom: 2px solid #323232; }
+      border-bottom: 2px solid #C18264; }

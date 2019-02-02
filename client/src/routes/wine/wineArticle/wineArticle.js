@@ -57,7 +57,7 @@ class WineArticle extends Component {
 
     return (
       this.state.article ? (
-        <div className="WineArticle mx-md-5 mx-3 my-5">
+        <div className="WineArticle mx-md-5 mx-4 my-5">
           <Row>
             <Col>
               { !!this.state.adjacentArticles ? <ArticleNavigator articles={this.state.adjacentArticles}/> : ''}

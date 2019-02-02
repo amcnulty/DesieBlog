@@ -5,7 +5,7 @@ import './home.css';
 const Home = props => {
   return (
     <div className="Home">
-      <div className="mx-md-5 mx-3">
+      <div className="mx-md-5 mx-4">
         <h1 className="desieBlogLogo">Desie Blog</h1>
         <div className="row justify-content-md-center">
           <div className="thumbnail-row col-md-7">

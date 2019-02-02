@@ -7,7 +7,7 @@ class SiteFooter extends Component {
 
     return (
       <div className="SiteFooter">
-        <div className="subscribe mx-md-5 mx-3">
+        <div className="subscribe mx-md-5 mx-4">
           <p>subscribe to receive content straight to your email</p>
           <form id="subscribeForm">
             <input type="email" size="50" placeholder="Email"/>

@@ -3,5 +3,6 @@
 
 .ArticleList .list {
   display: flex;
-  justify-content: space-evenly;
-  flex-wrap: wrap; }
+  justify-content: center;
+  flex-wrap: wrap;
+  margin: 0px 200px; }

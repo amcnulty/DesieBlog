@@ -1,7 +1,8 @@
 .HeaderSearch #searchInput {
   font-family: inherit;
   border: none;
-  border-bottom: 1px solid #EBBDA5; }
+  border-bottom: 1px solid #EBBDA5;
+  width: 200px; }
 
 .HeaderSearch .db-button {
   background: transparent;

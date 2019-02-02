@@ -26,7 +26,7 @@ class Recipes extends Component {
   render() {
     return (
       <div className="Recipes">
-        <div className="mx-md-5 mx-3">
+        <div className="mx-md-5 mx-4">
           <ArticleList articles={this.state.articles}/>
         </div>
       </div>

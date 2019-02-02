@@ -4,23 +4,25 @@
   right: 0;
   left: 0;
   color: #F9F6ED;
+  height: 80px;
+  line-height: 80px;
   background-color: #8A9E9C; }
   .SiteFooter .subscribe {
-    display: flex;
-    align-items: center; }
-  .SiteFooter .subscribe p {
-    margin: 10px 0px; }
-  .SiteFooter #subscribeForm {
-    display: flex;
-    align-items: center;
-    margin-left: auto; }
-    .SiteFooter #subscribeForm input {
+    display: flex; }
+    .SiteFooter .subscribe input {
       font-family: inherit;
       height: 30px; }
-    .SiteFooter #subscribeForm button {
-      height: 24px; }
+    .SiteFooter .subscribe button {
+      height: 24px;
+      background-color: #C18264; }
   .SiteFooter #subscribeForm button {
     font-family: inherit;
     height: 30px;
     border: none;
     cursor: pointer; }
+
+#subscribeForm {
+  display: flex;
+  align-items: center;
+  height: 80px;
+  margin-left: auto; }
