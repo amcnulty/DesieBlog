@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
+import ReactGA from 'react-ga';
 import './App.css';
+import GoogleAnalytics from './components/googleAnalytics/googleAnalytics';
 import SiteHeader from './header/header';
 import SiteFooter from './footer/footer';
 import Home from './routes/home/home';
@@ -16,11 +18,35 @@ import Portal from './routes/cms/portal/portal';
 import Dashboard from './routes/cms/dashboard/dashboard';
 import Preview from './routes/cms/preview/preview';
 
+ReactGA.initialize('UA-133762520-1');
+ReactGA.pageview('/book-list');
+
 class App extends Component {
+  
+  constructor(props, context) {
+    super(props, context);
+    this.state = {};
+  }
+
+  componentDidMount() {
+    console.log(this);
+  }
+
+  componentWillUnmount() {
+    this.state.listener();
+  }
+
+  fireTracking = () => {
+    console.log("firing traking");
+  }
+
   render() {
     return (
-      <Router>
+      <Router onChange={this.fireTracking()}>
         <div className="App">
+            <Route
+              pattern="/" component={GoogleAnalytics}
+            />
             <Route
               path="/"
               render={props => (!props.location.pathname.startsWith("/cms")) && <SiteHeader/>}
