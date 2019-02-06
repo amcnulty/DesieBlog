@@ -63,6 +63,11 @@ class DashboardNav extends Component {
                 <i className="fas fa-cog"></i> Account Settings
               </NavItem>
             </Link>
+            <Link to={`${this.props.match.url}/manage-images`}>
+              <NavItem className={this.checkIfActive('/cms/dashboard/manage-images') ? 'active' : 'inactive'}>
+                <i className="far fa-image"></i> Manage Images
+              </NavItem>
+            </Link>
           </Nav>
         </div>
         <div className="DashboardNavMobile col-12 px-0 d-md-none">

@@ -7,6 +7,7 @@ import ManageRecipes from '../dashboard/manageRecipes/manageRecipes';
 import ManageTravel from '../dashboard/manageTravel/manageTravel';
 import ManageWine from '../dashboard/manageWine/manageWine';
 import AccountSettings from '../dashboard/accountSettings/accountSettings';
+import ManageImages from '../dashboard/manageImages/manageImages';
 import DashboardNav from '../../../components/dashboardNav/dashboardNav';
 import './dashboard.css';
 
@@ -47,6 +48,7 @@ class Dashboard extends Component {
             <Route path={`${this.props.match.path}/travel`} render={props => <ManageTravel user={this.state.user}/>} />
             <Route path={`${this.props.match.path}/wine`} render={props => <ManageWine user={this.state.user}/>} />
             <Route path={`${this.props.match.path}/account-settings`} component={AccountSettings}/>
+            <Route path={`${this.props.match.path}/manage-images`} component={ManageImages}/>
             <Route exact path={this.props.match.path} component={Overview}/>
           </div>
         </div>

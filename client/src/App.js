@@ -28,21 +28,13 @@ class App extends Component {
     this.state = {};
   }
 
-  componentDidMount() {
-    console.log(this);
-  }
-
   componentWillUnmount() {
     this.state.listener();
   }
 
-  fireTracking = () => {
-    console.log("firing traking");
-  }
-
   render() {
     return (
-      <Router onChange={this.fireTracking()}>
+      <Router>
         <div className="App">
             <Route
               pattern="/" component={GoogleAnalytics}

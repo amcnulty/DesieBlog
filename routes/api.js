@@ -293,4 +293,15 @@ router.post('/wine', (req, res) => {
   });
 });
 
+router.get('/image-upload-credentials', (req, res) => {
+  if (!req.session.user) {
+    return res.status(401).send();
+  }
+  return res.status(200).send({
+    UPLOAD_PRESET: process.env.UPLOAD_PRESET,
+    API_KEY: process.env.API_KEY,
+    CLOUD_NAME: process.env.CLOUD_NAME
+  });
+});
+
 module.exports = router;

@@ -1,9 +1,11 @@
 import axios from 'axios';
+
+const localHost = (process.env.NODE_ENV === 'production') ? '' : 'http://localhost:3005';
+const config = { withCredentials: true };
 /**
  * The API utility makes api callouts simplified by not needing to worry about the endpoints.
  */
 export const API = {
-  
   /*
   *          !!##########################!!
   *          !!                          !!
@@ -18,7 +20,7 @@ export const API = {
   * @param callback Callback method with the api response.
   */
  getArticleById: (id, callback) => {
-   axios.get('/api/article-data/', {
+   axios.get(localHost + '/api/article-data/', {
      params: {
        id: id
      }
@@ -32,7 +34,7 @@ export const API = {
   * @callback Callback method with the api response.
   */
  getArticleByUrlTitle: (url, callback) => {
-   axios.get('/api/article-data/' + url)
+   axios.get(localHost + '/api/article-data/' + url)
    .then(res => {
      callback(null, res);
    })
@@ -46,7 +48,7 @@ export const API = {
   * @param callback Callback method with the api response.
   */
  getArticlesByKind: (kind, callback) => {
-   axios.get(`/api/articles?kind=${kind}`)
+   axios.get(localHost + `/api/articles?kind=${kind}`)
    .then(res => {
      callback(null, res);
    })
@@ -60,7 +62,7 @@ export const API = {
   * @param callback Callback method with the api response.
   */
  findAdjacentArticles: (record, callback) => {
-   axios.post('/api/articles/adjacent', record)
+   axios.post(localHost + '/api/articles/adjacent', record)
    .then(res => {
      callback(null, res);
     })
@@ -83,7 +85,7 @@ export const API = {
    * @param callback Callback method with the api response.
    */
   createBookArticle: (data, callback) => {
-    axios.post('/api/books/create-article', data)
+    axios.post(localHost + '/api/books/create-article', data)
     .then(res => {
       callback(null, res.status);
     })
@@ -105,7 +107,7 @@ export const API = {
    * @param callback Callback method with the api response.
    */
   createRecipeArticle: (data, callback) => {
-    axios.post('/api/recipes/create-article', data)
+    axios.post(localHost + '/api/recipes/create-article', data)
     .then(res => {
       callback(null, res.status);
     })
@@ -127,7 +129,7 @@ export const API = {
    * @param callback Callback method with the api response.
    */
   createTravelArticle: (data, callback) => {
-    axios.post('/api/travel/create-article', data)
+    axios.post(localHost + '/api/travel/create-article', data)
     .then(res => {
       callback(null, res.status);
     })
@@ -149,7 +151,7 @@ export const API = {
    * @param callback Callback method with the api response.
    */
   createWineArticle: (data, callback) => {
-    axios.post('/api/wine/create-article', data)
+    axios.post(localHost + '/api/wine/create-article', data)
     .then(res => {
       callback(null, res.status);
     })
@@ -172,7 +174,7 @@ export const API = {
    * @param callback The response from the request.
    */
   loginUser: (data, callback) => {
-    axios.post('/users/login', data)
+    axios.post(localHost + '/users/login', data, {withCredentials: true})
     .then(res => {
       callback(null, res.status);
     })
@@ -182,7 +184,7 @@ export const API = {
   },
 
   logoutUser: callback => {
-    axios.post('/users/logout')
+    axios.post(localHost + '/users/logout', null, config)
     .then(res => {
       callback(null, res.status);
     })
@@ -192,9 +194,42 @@ export const API = {
   },
 
   userPresent: callback => {
-    axios.get('/users/user-present')
+    axios.get(localHost + '/users/user-present', config)
     .then(user => {
       callback(null, user);
+    })
+    .catch(err => {
+      callback(err, err.response.status);
+    });
+  },
+  /*
+   *          !!##########################!!
+   *          !!                          !!
+   *          !!          Images          !!
+   *          !!                          !!
+   *          !!##########################!!
+   */
+
+  uploadImage: (file, tags, callback) => {
+    axios.get(localHost + '/api/image-upload-credentials', config)
+    .then(res => {
+      if (!tags) tags = ['Desie Blog'];
+      const formData = new FormData();
+      formData.append('file', file);
+      formData.append('tags', tags);
+      formData.append('upload_preset', res.data.UPLOAD_PRESET);
+      formData.append('api key', res.data.API_KEY);
+      formData.append('timestamp', (Date.now() / 1000) | 0);
+  
+      axios.post(`https://api.cloudinary.com/v1_1/${res.data.CLOUD_NAME}/image/upload`, formData, {
+        headers: { "X-Requested-With": "XMLHttpRequest" }
+      })
+      .then(res => {
+        callback(null, res);
+      })
+      .catch(err => {
+        callback(err, err.response.status);
+      });
     })
     .catch(err => {
       callback(err, err.response.status);
