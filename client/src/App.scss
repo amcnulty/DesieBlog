@@ -10,3 +10,8 @@ body {
   color: $textColor;
   background: $backgroundColor;
 }
+
+.App {
+  height: calc(100vh - $footerHeight);
+  padding-bottom: $appBottomPadding;
+}

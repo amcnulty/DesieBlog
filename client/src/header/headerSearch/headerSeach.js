@@ -1,21 +1,14 @@
-import React, { Component } from 'react';
+import React from 'react';
 import './headerSearch.css';
 
-class HeaderSearch extends Component {
+const HeaderSearch = props => {
 
-  componentDidMount() {
-
-  }
-
-  render() {
-
-    return (
-      <form className="HeaderSearch">
-        <input type="text" placeholder="Search..." name="search" id="searchInput"/>
-        <button type="submit" className="db-button"><i className="fa fa-search"></i></button>
-      </form>
-    )
-  }
+  return (
+    <form className="HeaderSearch">
+      <input type="text" placeholder="Search..." name="search" id="searchInput"/>
+      <button type="submit" className="db-button"><i className="fa fa-search"></i></button>
+    </form>
+  )
 }
 
 export default HeaderSearch;

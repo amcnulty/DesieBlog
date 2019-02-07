@@ -34,4 +34,5 @@
   border: none; }
 
 .DashboardNavMobile {
-  position: fixed; }
+  position: fixed;
+  z-index: 10; }

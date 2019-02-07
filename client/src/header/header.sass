@@ -2,25 +2,13 @@
   
 .SiteHeader
 
-  div
-    display: flex 
-    align-items: center
-    font-size: 18px
-    margin: 0px
-    margin-top: 20px
-
-    nav
-      display: flex
-      width: 300px
-      margin-right: auto
-      justify-content: space-between
-
-    nav
-      a
-        text-decoration: none
-        padding-bottom: 5px
-        color: inherit
-        border-bottom: 2px solid #EBBDA5
-        &.active
-          border-bottom: 2px solid $thumbnailBannerBackgroundColor
+  .nav-item
+    a
+      text-decoration: none
+      margin: 0px 16px 0px 16px
+      padding: 8px 0px 8px 0px !important
+      color: $textColor
+      border-bottom: 2px solid $headerUnderlineColor
+      &.active
+        border-bottom: 2px solid $thumbnailBannerBackgroundColor
 
