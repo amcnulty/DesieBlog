@@ -7312,3 +7312,6 @@ body {
 .App {
   height: calc(100vh - $footerHeight);
   padding-bottom: 90px; }
+
+.appDashboard {
+  margin-top: -90px; }

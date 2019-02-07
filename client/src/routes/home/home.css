@@ -38,8 +38,9 @@
   font-weight: bold; }
 
 .Home footer {
-  padding: 30px 0px 100px 0px;
+  padding: 30px 0px 30px 0px;
   margin-top: 30px;
+  margin-bottom: -10px;
   text-align: center;
   color: #efeee7;
   background: #8A9E9C; }

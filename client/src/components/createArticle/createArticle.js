@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import {Card, CardBody, CardHeader, Modal, ModalHeader, ModalBody, ModalFooter, Button } from 'reactstrap';
-import { Link } from 'react-router-dom';
 import ArticleThumbnail from '../../components/articleThumbnail/articleThumbnail';
 import { API } from '../../util/api';
 import ChipInput from 'material-ui-chip-input';

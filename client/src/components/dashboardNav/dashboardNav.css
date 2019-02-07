@@ -1,37 +1,29 @@
 .DashboardNavDesktop {
   height: 100vh;
   background-color: #888888; }
-
-.DashboardNavDesktop a,
-.DashboardNavDesktop Link {
-  color: whitesmoke;
-  text-decoration: none;
-  line-height: 40px; }
-
-.DashboardNavDesktop a:hover,
-.DashboardNavDesktop Link:hover {
-  background-color: #A0A0A0; }
-
-.DashboardNavDesktop .nav-item {
-  padding-left: 10px;
-  border-top: 1px solid #323232; }
-
-.DashboardNavDesktop .nav-item.active {
-  color: goldenrod; }
-
-.DashboardNavDesktop .nav-item:hover {
-  background-color: #A0A0A0; }
-
-.DashboardNavDesktop .nav a:first-child li {
-  border: none; }
-
-.DashboardNavDesktop .nav a:last-child {
-  border-bottom: 1px solid #323232; }
-
-.DashboardNavDesktop .collapse .nav-item,
-.DashboardNavDesktop .collapsing .nav-item {
-  padding-left: 30px;
-  border: none; }
+  .DashboardNavDesktop a,
+  .DashboardNavDesktop Link {
+    color: whitesmoke;
+    text-decoration: none;
+    line-height: 40px; }
+    .DashboardNavDesktop a:hover,
+    .DashboardNavDesktop Link:hover {
+      background-color: #A0A0A0; }
+  .DashboardNavDesktop .nav-item {
+    padding-left: 10px;
+    border-top: 1px solid #323232; }
+    .DashboardNavDesktop .nav-item.active {
+      color: goldenrod; }
+    .DashboardNavDesktop .nav-item:hover {
+      background-color: #A0A0A0; }
+  .DashboardNavDesktop .nav a:first-child li {
+    border: none; }
+  .DashboardNavDesktop .nav a:last-child {
+    border-bottom: 1px solid #323232; }
+  .DashboardNavDesktop .collapse .nav-item,
+  .DashboardNavDesktop .collapsing .nav-item {
+    padding-left: 30px;
+    border: none; }
 
 .DashboardNavMobile {
   position: fixed;

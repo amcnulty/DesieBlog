@@ -4,10 +4,6 @@ import ReactGA from 'react-ga';
 
 class GoogleAnalytics extends Component {
   
-  constructor(props) {
-    super(props);
-  }
-  
   componentWillMount() {
     this.listener = this.props.history.listen(() => {
       ReactGA.initialize('UA-133762520-1');

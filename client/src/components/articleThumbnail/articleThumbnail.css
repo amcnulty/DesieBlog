@@ -9,23 +9,21 @@
   box-shadow: 10px 10px 8px 0px #9ba6aa;
   transition: .3s ease;
   cursor: pointer; }
-
-.ArticleThumbnail .thumbnail:hover {
-  transform: scale(1.05);
-  box-shadow: 15px 15px 8px 0px #9ba6aa; }
-
-.ArticleThumbnail .thumbnail .banner {
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  height: 60px;
-  line-height: 60px;
-  font-size: 22px;
-  text-align: center;
-  opacity: .92;
-  background-color: #C18264;
-  color: #F9F6ED;
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis; }
+  .ArticleThumbnail .thumbnail:hover {
+    transform: scale(1.05);
+    box-shadow: 15px 15px 8px 0px #9ba6aa; }
+  .ArticleThumbnail .thumbnail .banner {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 60px;
+    line-height: 60px;
+    font-size: 22px;
+    text-align: center;
+    opacity: .92;
+    background-color: #C18264;
+    color: #F9F6ED;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis; }

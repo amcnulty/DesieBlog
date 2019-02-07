@@ -88,19 +88,21 @@ class App extends Component {
                 path="/wine/:path"
                 component={WineArticle}
               />
-              <Route
-                exact
-                path="/cms"
-                component={Portal}
-              />
-              <Route
-                path="/cms/dashboard"
-                component={Dashboard}
-              />
-              <Route
-                path="/cms/preview"
-                component={Preview}
-              />
+          </div>
+          <div className="appDashboard">
+            <Route
+              exact
+              path="/cms"
+              component={Portal}
+            />
+            <Route
+              path="/cms/dashboard"
+              component={Dashboard}
+            />
+            <Route
+              path="/cms/preview"
+              component={Preview}
+            />
           </div>
           <Route
             path="/"

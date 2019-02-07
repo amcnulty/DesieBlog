@@ -15,3 +15,7 @@ body {
   height: calc(100vh - $footerHeight);
   padding-bottom: $appBottomPadding;
 }
+
+.appDashboard {
+  margin-top: -$appBottomPadding;
+}

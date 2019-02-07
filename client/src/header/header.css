@@ -4,6 +4,5 @@
   padding: 8px 0px 8px 0px !important;
   color: #6D7578;
   border-bottom: 2px solid #EBBDA5; }
-
-.SiteHeader .nav-item a.active {
-  border-bottom: 2px solid #C18264; }
+  .SiteHeader .nav-item a.active {
+    border-bottom: 2px solid #C18264; }

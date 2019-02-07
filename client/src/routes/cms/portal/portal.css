@@ -6,40 +6,47 @@
   background-image: url("/res/images/background/cmsLoginBackground.jpg");
   height: 100vh;
   text-align: center; }
-  .Portal .headers {
-    border-bottom: 2px solid #6D7578; }
-  .Portal .loginForm {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 20px;
-    padding: 50px;
-    background-color: rgba(255, 255, 255, 0.3); }
-    .Portal .loginForm span {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      width: 100%; }
-      .Portal .loginForm span input {
-        border: none;
-        outline: none;
-        border-bottom: 2px solid #6D7578;
-        border-radius: 0px;
-        font-size: 1.1em;
-        background: none;
-        padding: 4px 4px 4px 4px;
-        width: 70%; }
-        .Portal .loginForm span input:focus {
-          border-color: #01579b;
-          box-shadow: 0px 6px 6px -6px #01579b; }
-  .Portal footer {
-    position: absolute;
-    bottom: 0px;
-    left: 0px;
-    right: 0px;
-    height: 30px;
-    line-height: 30px;
-    background-color: rgba(255, 255, 255, 0.3);
-    text-align: right; }
-    .Portal footer span {
-      padding-right: 30px; }
+
+.Portal .headers {
+  border-bottom: 2px solid #6D7578; }
+
+.Portal .loginForm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+  padding: 50px;
+  background-color: rgba(255, 255, 255, 0.3); }
+
+.Portal .loginForm span {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%; }
+
+.Portal .loginForm span input {
+  border: none;
+  outline: none;
+  border-bottom: 2px solid #6D7578;
+  border-radius: 0px;
+  font-size: 1.1em;
+  background: none;
+  padding: 4px 4px 4px 4px;
+  width: 70%; }
+
+.Portal .loginForm span input:focus {
+  border-color: #01579b;
+  box-shadow: 0px 6px 6px -6px #01579b; }
+
+.Portal footer {
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
+  height: 30px;
+  line-height: 30px;
+  background-color: rgba(255, 255, 255, 0.3);
+  text-align: right; }
+
+.Portal footer span {
+  padding-right: 30px; }
