@@ -8,6 +8,7 @@ const TravelArticle = require('../db/schemas/TravelArticle');
 const WineArticle = require('../db/schemas/WineArticle');
 const swaggerJSDoc = require('swagger-jsdoc');
 const path = require('path');
+const axios = require('axios');
 
 const swaggerDefinition = {
   info: {
@@ -301,6 +302,34 @@ router.get('/image-upload-credentials', (req, res) => {
     UPLOAD_PRESET: process.env.UPLOAD_PRESET,
     API_KEY: process.env.API_KEY,
     CLOUD_NAME: process.env.CLOUD_NAME
+  });
+});
+
+router.get('/images', (req, res) => {
+  if (!req.session.user) {
+    return res.status(401).send();
+  }
+  axios.get(`https://${process.env.API_KEY}:${process.env.API_SECRET}@api.cloudinary.com/v1_1/${process.env.CLOUD_NAME}/resources/image?tags=true&max_results=500`)
+  .then(images => {
+    return res.status(200).send(images.data);
+  })
+  .catch(err => {
+    console.log(err);
+    return res.status(500).send(err);
+  });
+});
+
+router.delete('/images/:id', (req, res) => {
+  if (!req.session.user) {
+    return res.status(401).send();
+  }
+  axios.delete(`https://${process.env.API_KEY}:${process.env.API_SECRET}@api.cloudinary.com/v1_1/${process.env.CLOUD_NAME}/resources/image/upload?public_ids[]=${req.params.id}`)
+  .then(response => {
+    return res.status(200).send();
+  })
+  .catch(err => {
+    console.log(err);
+    return res.status(500).send();
   });
 });
 

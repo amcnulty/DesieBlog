@@ -71,7 +71,7 @@ class DashboardNav extends Component {
           </Nav>
         </div>
         <div className="DashboardNavMobile col-12 px-0 d-md-none">
-          <Navbar color="light" light expand="sm">
+          <Navbar color="light" light expand="md">
             <NavbarBrand href="/cms/dashboard">Desie Blog Poral</NavbarBrand>
             <NavbarToggler onClick={() => this.toggle('mobileNavbarIsOpen')} />
             <Collapse isOpen={this.state.mobileNavbarIsOpen} navbar>
@@ -97,6 +97,9 @@ class DashboardNav extends Component {
                 </UncontrolledDropdown>
                 <NavItem>
                   <NavLink href={`${this.props.match.url}/account-settings`}><i className="fas fa-cog"></i> Account Settings</NavLink>
+                </NavItem>
+                <NavItem>
+                  <NavLink href={`${this.props.match.url}/manage-images`}><i className="far fa-image"></i> Manage Images</NavLink>
                 </NavItem>
               </Nav>
             </Collapse>

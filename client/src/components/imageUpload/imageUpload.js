@@ -56,7 +56,7 @@ class ImageUpload extends Component {
         <Dropzone
           onDrop={this.handleFileUpload}
           accept="image/*"
-          maxSize="200000"
+          maxSize={200000}
         >
         {({getRootProps, getInputProps}) => {
           return (

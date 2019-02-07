@@ -42,7 +42,7 @@ class Dashboard extends Component {
       <div className="Dashboard container-fluid">
         <div className="row">
           <DashboardNav/>
-          <div className="col-lg-10 col-md-9 col-12 rightContent">
+          <div className="col-lg-10 col-md-9 col-12 pt-5 pt-md-0 rightContent">
             <Route path={`${this.props.match.path}/books`} render={props => <ManageBooks user={this.state.user} />}/>
             <Route path={`${this.props.match.path}/recipes`} render={props => <ManageRecipes user={this.state.user}/>} />
             <Route path={`${this.props.match.path}/travel`} render={props => <ManageTravel user={this.state.user}/>} />

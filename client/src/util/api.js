@@ -26,7 +26,7 @@ export const API = {
      }
    })
    .then(res => callback(null, res))
-   .catch(err => callback(err, err.response.status));
+   .catch(err => callback(err, err));
  },
  /**
   * Gets an Article record with the given url field.
@@ -39,7 +39,7 @@ export const API = {
      callback(null, res);
    })
    .catch(err => {
-     callback(err, err.response.status);
+     callback(err, err);
    });
  },
  /**
@@ -53,7 +53,7 @@ export const API = {
      callback(null, res);
    })
    .catch(err => {
-     callback(err, err.response.status);
+     callback(err, err);
    });
  },
  /**
@@ -67,7 +67,7 @@ export const API = {
      callback(null, res);
     })
     .catch(err => {
-      callback(err, err.response.status);
+      callback(err, err);
     });
   },
   
@@ -90,7 +90,7 @@ export const API = {
       callback(null, res.status);
     })
     .catch(err => {
-      callback(err, err.response.status);
+      callback(err, err);
     });
   },
   /*
@@ -112,7 +112,7 @@ export const API = {
       callback(null, res.status);
     })
     .catch(err => {
-      callback(err, err.response.status);
+      callback(err, err);
     });
   },
   /*
@@ -134,7 +134,7 @@ export const API = {
       callback(null, res.status);
     })
     .catch(err => {
-      callback(err, err.response.status);
+      callback(err, err);
     });
   },
   /*
@@ -156,7 +156,7 @@ export const API = {
       callback(null, res.status);
     })
     .catch(err => {
-      callback(err, err.response.status);
+      callback(err, err);
     });
   },
 
@@ -179,7 +179,7 @@ export const API = {
       callback(null, res.status);
     })
     .catch(err => {
-      callback(err, err.response.status);
+      callback(err, err);
     }); 
   },
 
@@ -199,7 +199,7 @@ export const API = {
       callback(null, user);
     })
     .catch(err => {
-      callback(err, err.response.status);
+      callback(err, err);
     });
   },
   /*
@@ -228,11 +228,31 @@ export const API = {
         callback(null, res);
       })
       .catch(err => {
-        callback(err, err.response.status);
+        callback(err, err);
       });
     })
     .catch(err => {
-      callback(err, err.response.status);
+      callback(err, err);
+    });
+  },
+
+  getAllImages: callback => {
+    axios.get(localHost + '/api/images', config)
+    .then(res => {
+      callback(null, res);
+    })
+    .catch(err => {
+      callback(err, err);
+    });
+  },
+
+  deleteImage: (id, callback) => {
+    axios.delete(localHost + `/api/images/${id}`, config)
+    .then(res => {
+      callback(null, res);
+    })
+    .catch(err => {
+      callback(err, err);
     });
   }
 }

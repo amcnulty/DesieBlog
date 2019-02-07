@@ -7,7 +7,7 @@ const ArticleThumbnail = props => {
   return (
     <div className="ArticleThumbnail">
       <a href={props.url}>
-        <div className="thumbnail my-4 mx-3" style={{backgroundImage: toBackgroundUrl(props.thumbnailImage)}}>
+        <div className="thumbnail my-4 mx-auto" style={{backgroundImage: toBackgroundUrl(props.thumbnailImage)}}>
           <div className="banner" title={props.bannerText}>
             {props.bannerText}
           </div>
