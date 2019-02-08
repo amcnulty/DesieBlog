@@ -20,7 +20,7 @@ class Dashboard extends Component {
     }
     API.userPresent((err, res) => {
       if (err) {
-        if (res === 401) {
+        if (err.response.status === 401) {
           this.props.history.push('/cms');
         }
         console.log(err);
