@@ -5,7 +5,6 @@ import './articleList.css';
 const ArticleList = props => {
   return (
     <div className="ArticleList mb-5">
-      <h1>Articles</h1>
       <div className="row">
         {
           props.articles.map(article => {

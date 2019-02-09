@@ -67,7 +67,6 @@ class BookArticle extends Component {
             <Col className="articleContent" md="8" lg="9" xl="10">
               <div>
                 <h1>{this.state.article.title}</h1>
-                <h3>Authors:</h3>
                 <ol className="list-unstyled">
                   {this.state.article.authors.map(author => {
                     return <li>{author}</li>
@@ -77,7 +76,7 @@ class BookArticle extends Component {
               </div>
               <div className="articleBody" dangerouslySetInnerHTML={{ __html: this.state.article.body}}></div>
               <p>
-                <small><strong>Published On:</strong> {new Date(this.state.article.date).toDateString()}</small>
+                <small>{new Date(this.state.article.date).toDateString()}</small>
               </p>
             </Col>
             <Col md="4" lg="3" xl="2"></Col>

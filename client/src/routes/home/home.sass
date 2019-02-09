@@ -13,15 +13,25 @@
 
   .thumbnail 
     position: relative
-    width: 44%
-    padding-bottom: 52%
-    margin: 20px
-    background: url("https://simply-delicious-food.com/wp-content/uploads/2016/09/banana-oat-pancakes-3.jpg")
+    display: block
+    max-width: 400px
+    height: 400px
     background-size: cover
     box-shadow: 10px 10px 8px 0px rgb(155, 166, 170)
     cursor: pointer
     transition: .3s ease
 
+    &.recipes
+      background: url("http://res.cloudinary.com/dz54puaeo/image/upload/v1549742472/d4ma8x2aptfwbo6rsujt.jpg")
+
+    &.wine
+      background: url("http://res.cloudinary.com/dz54puaeo/image/upload/v1549742509/jahvtorzyccro1tizrob.jpg")
+
+    &.travel
+      background: url("http://res.cloudinary.com/dz54puaeo/image/upload/v1549742553/aw0qtuukfmmrgtlpdvrq.jpg")
+
+    &.books
+      background: url("http://res.cloudinary.com/dz54puaeo/image/upload/v1549742584/zvcnb8hvs8ocvllvwscb.jpg")
 
   .thumbnail:hover 
     transform: scale(1.05)
@@ -35,7 +45,7 @@
     justify-content: center
     bottom: 0
     left: 0
-    right: 0
+    width: 100%
     height: 20%
     background-color: $thumbnailBannerBackgroundColor
     opacity: .95

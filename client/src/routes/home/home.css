@@ -9,14 +9,25 @@
 
 .Home .thumbnail {
   position: relative;
-  width: 44%;
-  padding-bottom: 52%;
-  margin: 20px;
-  background: url("https://simply-delicious-food.com/wp-content/uploads/2016/09/banana-oat-pancakes-3.jpg");
+  display: block;
+  max-width: 400px;
+  height: 400px;
   background-size: cover;
   box-shadow: 10px 10px 8px 0px #9ba6aa;
   cursor: pointer;
   transition: .3s ease; }
+
+.Home .thumbnail.recipes {
+  background: url("http://res.cloudinary.com/dz54puaeo/image/upload/v1549742472/d4ma8x2aptfwbo6rsujt.jpg"); }
+
+.Home .thumbnail.wine {
+  background: url("http://res.cloudinary.com/dz54puaeo/image/upload/v1549742509/jahvtorzyccro1tizrob.jpg"); }
+
+.Home .thumbnail.travel {
+  background: url("http://res.cloudinary.com/dz54puaeo/image/upload/v1549742553/aw0qtuukfmmrgtlpdvrq.jpg"); }
+
+.Home .thumbnail.books {
+  background: url("http://res.cloudinary.com/dz54puaeo/image/upload/v1549742584/zvcnb8hvs8ocvllvwscb.jpg"); }
 
 .Home .thumbnail:hover {
   transform: scale(1.05);
@@ -29,7 +40,7 @@
   justify-content: center;
   bottom: 0;
   left: 0;
-  right: 0;
+  width: 100%;
   height: 20%;
   background-color: #C18264;
   opacity: .95;
@@ -44,5 +55,6 @@
   text-align: center;
   color: #efeee7;
   background: #8A9E9C; }
-  .Home footer p {
-    margin: 0px; }
+
+.Home footer p {
+  margin: 0px; }

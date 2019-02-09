@@ -65,14 +65,14 @@ class RecipeArticle extends Component {
           </Row>
           <Row>
             <Col className="articleContent" md="8" lg="9" xl="10">
-              <p>
-                <small><strong>Published On:</strong> {new Date(this.state.article.date).toDateString()}</small>
-              </p>
               <div className="text-center">
                 <h1>{this.state.article.title}</h1>
                 <img className="articleImage mb-5" src={this.state.article.mainImage} alt="Article Thumbnail"/>
               </div>
               <div className="articleBody" dangerouslySetInnerHTML={{ __html: this.state.article.body}}></div>
+              <p>
+                <small>{new Date(this.state.article.date).toDateString()}</small>
+              </p>
             </Col>
             <Col md="4" lg="3" xl="2"></Col>
           </Row>
