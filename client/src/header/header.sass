@@ -1,7 +1,21 @@
 @import "../sass/variables"
   
 .SiteHeader
+  position: fixed
+  top: 0
+  left: 0
+  right: 0
+  z-index: 10
+  background-color: rgba($backgroundColor, .95)
 
+  .desieBlogLogo
+    position: absolute
+    transform: translateX(-50%)
+    left: 50%
+
+  .navbar-collapse
+    z-index: 10
+    
   .nav-item
     a
       text-decoration: none
@@ -11,4 +25,8 @@
       border-bottom: 2px solid $headerUnderlineColor
       &.active
         border-bottom: 2px solid $thumbnailBannerBackgroundColor
+
+  @media (max-width: 767px)
+    .navbar-collapse
+      background-color: $backgroundColor
 

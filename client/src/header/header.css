@@ -1,8 +1,29 @@
+.SiteHeader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
+  background-color: rgba(249, 246, 237, 0.95); }
+
+.SiteHeader .desieBlogLogo {
+  position: absolute;
+  transform: translateX(-50%);
+  left: 50%; }
+
+.SiteHeader .navbar-collapse {
+  z-index: 10; }
+
 .SiteHeader .nav-item a {
   text-decoration: none;
   margin: 0px 16px 0px 16px;
   padding: 8px 0px 8px 0px !important;
   color: #6D7578;
   border-bottom: 2px solid #EBBDA5; }
-  .SiteHeader .nav-item a.active {
-    border-bottom: 2px solid #C18264; }
+
+.SiteHeader .nav-item a.active {
+  border-bottom: 2px solid #C18264; }
+
+@media (max-width: 767px) {
+  .SiteHeader .navbar-collapse {
+    background-color: #F9F6ED; } }

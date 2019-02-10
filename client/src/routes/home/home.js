@@ -6,7 +6,6 @@ const Home = props => {
   return (
     <div className="Home">
       <div className="mx-md-5 mx-4">
-        <h1 className="desieBlogLogo">Desie Blog</h1>
 
         <div className="row">
           <div className="col col-sm-10 offset-sm-1 col-lg-10 offset-lg-1 col-xl-10 offset-xl-1">
