@@ -189,9 +189,9 @@ class CreateArticle extends Component {
           <div className="col-lg-5 col-12">
             <Card>
               <CardHeader>Thumbnail Preview</CardHeader>
-              <CardBody className="align-self-center">
+              <CardBody className="align-self-center w-100">
                 <ArticleThumbnail
-                  thumbnailImage={!this.state.thumbnailImage ? '/res/images/default.png' : this.state.thumbnailImage}
+                  thumbnailImage={!this.state.thumbnailImage || this.state.thumbnailImage === '' ? '/res/images/default.png' : this.state.thumbnailImage}
                   bannerText={this.state.bannerText}
                  />
               </CardBody>

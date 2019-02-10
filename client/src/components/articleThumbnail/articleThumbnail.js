@@ -2,7 +2,10 @@ import React from 'react';
 import './articleThumbnail.css';
 
 const ArticleThumbnail = props => {
-  const toBackgroundUrl = url => `url("${url}")`;
+  const toBackgroundUrl = url => {
+    if (!url || url === '') return `url("/res/images/default.png")`;
+    else return `url("${url}")`;
+  }
 
   return (
     <div className="ArticleThumbnail">

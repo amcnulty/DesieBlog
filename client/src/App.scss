@@ -17,5 +17,6 @@ body {
 }
 
 .appDashboard {
-  margin-top: -$appBottomPadding;
+  margin-top: -$appBottomPadding - $appTopPadding;
+
 }

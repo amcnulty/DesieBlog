@@ -1,18 +1,15 @@
 .HeaderSearch {
   margin: 8px 8px 0px 8px; }
-
-.HeaderSearch #searchInput {
-  font-family: inherit;
-  border: none;
-  border-bottom: 1px solid #EBBDA5;
-  width: 200px; }
-
-.HeaderSearch .db-button {
-  background: transparent;
-  border: none;
-  cursor: pointer;
-  color: #6D7578; }
-
-@media (max-width: 767.98px) {
   .HeaderSearch #searchInput {
-    width: calc(100% - 50px); } }
+    font-family: inherit;
+    border: none;
+    border-bottom: 1px solid #EBBDA5;
+    width: 200px; }
+  .HeaderSearch .db-button {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    color: #6D7578; }
+  @media (max-width: 767.98px) {
+    .HeaderSearch #searchInput {
+      width: calc(100% - 50px); } }
