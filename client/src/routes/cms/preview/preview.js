@@ -14,6 +14,10 @@ const articleMap = {
 
 class Preview extends Component {
 
+  constructor(props) {
+    super(props);
+  }
+
   componentWillMount() {
     this.setState({ articleData: JSON.parse(localStorage.getItem('articleData')) })
     this.setState({ type: localStorage.getItem('type')});

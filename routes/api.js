@@ -184,8 +184,8 @@ router.get('/article-data/:urlTitle', (req, res) => {
   });
 });
 
-router.get('/article-data/:id', (req, res) => {
-  Article.findById(req.params.id, (err, article) => {
+router.get('/article-data', (req, res) => {
+  Article.findById(req.query.id, (err, article) => {
     if (err) {
       console.log(err);
       return res.status(500).send();

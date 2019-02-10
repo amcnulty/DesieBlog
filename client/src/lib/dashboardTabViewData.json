@@ -1,6 +1,7 @@
 {
   "Books": {
     "type": "book",
+    "kind": "Book",
     "relativePath": "/books/",
     "fields": [
       {
@@ -51,6 +52,7 @@
   },
   "Recipes": {
     "type": "recipes",
+    "kind": "Recipes",
     "relativePath": "/recipes/",
     "fields": [
       {
@@ -92,6 +94,7 @@
   },
   "Travel": {
     "type": "travel",
+    "kind": "Travel",
     "relativePath": "/travel/",
     "fields": [
       {
@@ -133,6 +136,7 @@
   },
   "Wine": {
     "type": "wine",
+    "kind": "Wine",
     "relativePath": "/wine/",
     "fields": [
       {

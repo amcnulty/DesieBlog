@@ -11,18 +11,14 @@
   box-shadow: 10px 10px 8px 0px #9ba6aa;
   cursor: pointer;
   transition: .3s ease; }
-
-.Home .thumbnail.recipes {
-  background: url("http://res.cloudinary.com/dz54puaeo/image/upload/v1549742472/d4ma8x2aptfwbo6rsujt.jpg"); }
-
-.Home .thumbnail.wine {
-  background: url("http://res.cloudinary.com/dz54puaeo/image/upload/v1549742509/jahvtorzyccro1tizrob.jpg"); }
-
-.Home .thumbnail.travel {
-  background: url("http://res.cloudinary.com/dz54puaeo/image/upload/v1549742553/aw0qtuukfmmrgtlpdvrq.jpg"); }
-
-.Home .thumbnail.books {
-  background: url("http://res.cloudinary.com/dz54puaeo/image/upload/v1549742584/zvcnb8hvs8ocvllvwscb.jpg"); }
+  .Home .thumbnail.recipes {
+    background: url("http://res.cloudinary.com/dz54puaeo/image/upload/v1549742472/d4ma8x2aptfwbo6rsujt.jpg"); }
+  .Home .thumbnail.wine {
+    background: url("http://res.cloudinary.com/dz54puaeo/image/upload/v1549742509/jahvtorzyccro1tizrob.jpg"); }
+  .Home .thumbnail.travel {
+    background: url("http://res.cloudinary.com/dz54puaeo/image/upload/v1549742553/aw0qtuukfmmrgtlpdvrq.jpg"); }
+  .Home .thumbnail.books {
+    background: url("http://res.cloudinary.com/dz54puaeo/image/upload/v1549742584/zvcnb8hvs8ocvllvwscb.jpg"); }
 
 .Home .thumbnail:hover {
   transform: scale(1.05);
@@ -49,6 +45,5 @@
   margin-bottom: -10px;
   text-align: center;
   background: #8A9E9C; }
-
-.Home footer a {
-  color: #efeee7; }
+  .Home footer a {
+    color: #efeee7; }

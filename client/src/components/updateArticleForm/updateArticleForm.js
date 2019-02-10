@@ -1,32 +1,18 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import {Card, CardBody, CardHeader, Modal, ModalHeader, ModalBody, ModalFooter, Button } from 'reactstrap';
-import ArticleThumbnail from '../../components/articleThumbnail/articleThumbnail';
-import { API } from '../../util/api';
 import ChipInput from 'material-ui-chip-input';
-import { EditorState, convertToRaw } from 'draft-js';
-import { Editor } from 'react-draft-wysiwyg';
-import draftToHtml from 'draftjs-to-html';
-import '../../../node_modules/react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
-import './createArticle.css';
+import {API} from '../../util/api';
+import ArticleThumbnail from '../articleThumbnail/articleThumbnail';
+import './updateArticleForm.css';
 
-class CreateArticle extends Component {
+class UpdateArticleForm extends Component {
 
   constructor(props) {
     super(props);
     this.state = {
-      title: '',
-      urlTitle: '',
-      path: '',
-      thumbnailImage: '',
-      bannerText: '',
-      body: '',
-      modal: false,
-      editorState: EditorState.createEmpty()
+      ...this.props.article,
+      modal: false
     }
-    this.props.articleData.inputs.forEach(input => {
-      if (input.type === 'chip') this.state[input.id] = [];
-      else this.state[input.id] = '';
-    });
   }
 
   previewArticle = () => {
@@ -36,40 +22,16 @@ class CreateArticle extends Component {
   }
   
   saveArticle = () => {
-    const commandMap = {
-      book: API.createBookArticle,
-      recipes: API.createRecipeArticle,
-      travel: API.createTravelArticle,
-      wine: API.createWineArticle
-    }
-    const req = {};
-    req.author = this.props.articleAuthor;
-    this.props.articleData.fields.forEach(field => {
-      req[field.name] = this.state[field.value];
-    });
-    req.body = draftToHtml(convertToRaw(this.state.editorState.getCurrentContent()));
-    console.log('req :', req);
-    commandMap[this.props.articleData.type](req, (err, status) => {
-      if (err) console.log(err);
-      console.log(status);
-      if (status === 200) this.toggle();
-    });
   }
 
   getArticleData = () => {
-    const req = {};
-    req.author = this.props.articleAuthor;
+    const data = {};
+    // req.author = this.props.articleAuthor;
     this.props.articleData.fields.forEach(field => {
-      req[field.name] = this.state[field.value];
+      data[field.name] = this.state[field.value];
     });
-    req.body = draftToHtml(convertToRaw(this.state.editorState.getCurrentContent()));
-    return req;
-  }
-
-  onEditorStateChange = (editorState) => {
-    this.setState({
-      editorState: editorState
-    });
+    data.body = this.state.body;
+    return data;
   }
 
   setTitle = e => {
@@ -126,9 +88,8 @@ class CreateArticle extends Component {
   }
 
   render() {
-    const {editorState} = this.state;
     return (
-      <div className="CreateArticle mb-5">
+      <div className="UpdateArticleForm mb-5">
         <div className="row align-items-center">
           <div className="col-lg-7 col-12">
             <h3>Article Thumbnail Information</h3>
@@ -140,7 +101,7 @@ class CreateArticle extends Component {
                 type="text"
                 value={this.state.title}
                 onChange={(event) => {this.handleChange(event); this.setTitle(event)}}
-                />
+              />
             </div>
             <div className="form-group">
               <label htmlFor="urlTitle">Url Title</label>
@@ -160,7 +121,7 @@ class CreateArticle extends Component {
                 readOnly={true}
                 type="text"
                 value={this.state.path}
-                placeholder={`${this.props.articleData.relativePath}path-to-article`}
+                placeholder={`${this.getPath()}path-to-article`}
               />
             </div>
             <div className="form-group">
@@ -201,17 +162,11 @@ class CreateArticle extends Component {
         <div className="row justify-content-center">
           <div className="col-xl-10 col-md-11">
             <h3 className="text-center">Article Body</h3>
-            <Editor
-              editorState={editorState}
-              onEditorStateChange={this.onEditorStateChange}
-              wrapperClassName="editorWrapper"
-              toolbarClassName="toolbar"
-              editorClassName="editor"
-            />
             <textarea
-              className="preview w-100 mt-3"
-              disabled={true}
-              value={(!!editorState) ? draftToHtml(convertToRaw(editorState.getCurrentContent())) : ''}
+              id="body"
+              className="w-100"
+              value={this.state.body}
+              onChange={this.handleChange}
             />
           </div>
           <div className="col-lg-7 col-12 d-flex">
@@ -233,4 +188,4 @@ class CreateArticle extends Component {
   }
 }
 
-export default CreateArticle;
+export default UpdateArticleForm;
