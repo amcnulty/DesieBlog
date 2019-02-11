@@ -15,18 +15,32 @@ class UpdateArticleForm extends Component {
     }
   }
 
+  componentWillMount() {
+    this.setInputs();
+  }
+
   previewArticle = () => {
     localStorage.setItem('articleData', JSON.stringify(this.getArticleData()));
     localStorage.setItem('type', this.props.articleData.type);
     window.open('/cms/preview', '_blank');
   }
   
-  saveArticle = () => {
+  updateArticle = () => {
+    const commandMap = {
+      book: API.updateBookArticle,
+      recipes: API.updateRecipeArticle,
+      travel: API.updateTravelArticle,
+      wine: API.updateWineArticle
+    }
+    commandMap[this.props.articleData.type](this.state._id, this.getArticleData(), (err, res) => {
+      if (err) console.log(err);
+      else this.toggle();
+    });
   }
 
   getArticleData = () => {
     const data = {};
-    // req.author = this.props.articleAuthor;
+    data.author = this.props.articleAuthor;
     this.props.articleData.fields.forEach(field => {
       data[field.name] = this.state[field.value];
     });
@@ -60,6 +74,16 @@ class UpdateArticleForm extends Component {
     });
   }
 
+  setInputs = () => {
+    console.log(this.props.articleData);
+    this.props.articleData.inputs.forEach(input => {
+      console.log(input);
+      this.setState({
+        [input.id]: this.state[this.props.articleData.fields.find(field => field.value === input.id).name]
+      });
+    });
+  }
+
   getInputs = () => {
     return this.props.articleData.inputs.map(input => {
       return (
@@ -76,6 +100,7 @@ class UpdateArticleForm extends Component {
           :
           <ChipInput
             className="form-control"
+            value={this.state[input.id]}
             onChange={(chips) => this.handleChangeChips(chips, input.id)}
           /> }
         </div>
@@ -88,6 +113,7 @@ class UpdateArticleForm extends Component {
   }
 
   render() {
+    console.log(this.state);
     return (
       <div className="UpdateArticleForm mb-5">
         <div className="row align-items-center">
@@ -170,14 +196,14 @@ class UpdateArticleForm extends Component {
             />
           </div>
           <div className="col-lg-7 col-12 d-flex">
-            <button className="btn btn-success w-50 mr-3" onClick={this.saveArticle}>Save Article</button>
+            <button className="btn btn-success w-50 mr-3" onClick={this.updateArticle}>Update Article</button>
             <button className="btn btn-primary w-50" onClick={this.previewArticle}>Preview Article</button>
           </div>
         </div>
         <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
           <ModalHeader toggle={this.toggle}><i className="fas fa-exclamation-triangle"></i> Information</ModalHeader>
           <ModalBody>
-            Article Save Successful!
+            Article Update Successful!
           </ModalBody>
           <ModalFooter>
             <Button color="primary" onClick={this.toggle}>OK</Button>{' '}

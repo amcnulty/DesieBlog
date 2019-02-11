@@ -40,7 +40,9 @@ class BookArticle extends Component {
   }
 
   componentWillUnmount() {
-    this.state.listener();
+    if (!this.props.preview) {
+      this.state.listener();
+    }
   }
 
   findAdjacentArticles(article) {

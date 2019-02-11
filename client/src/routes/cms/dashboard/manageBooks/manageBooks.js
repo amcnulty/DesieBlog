@@ -10,7 +10,7 @@ const ManageBooks = props => {
     <div className="ManageBooks">
       <DashboardTabView>
         <CreateArticle articleAuthor={props.user.data.displayName} articleData={articleData.Books}/>
-        <UpdateArticle articleData={articleData.Books} />
+        <UpdateArticle articleAuthor={props.user.data.displayName} articleData={articleData.Books} />
         <span>Tab content 3</span>
       </DashboardTabView>
     </div>

@@ -201,11 +201,21 @@ router.post('/books/create-article', (req, res) => {
   newBookArticle.save(err => {
     if (err) {
       console.log(err);
-      res.status(500).send();
+      return res.status(500).send();
     }
     return res.status(200).send();
   });
 });
+
+router.put('/books/update-article/:id', (req, res) => {
+  BookArticle.findOneAndUpdate( {_id: req.params.id}, req.body, (err, article) => {
+    if (err) {
+      console.log(err);
+      return res.status(500).send();
+    }
+    return res.status(200).send();
+  });
+})
 
 router.post('/recipes/create-article', (req, res) => {
   const newRecipeArticle = new RecipeArticle(req.body);
@@ -213,7 +223,7 @@ router.post('/recipes/create-article', (req, res) => {
   newRecipeArticle.save(err => {
     if (err) {
       console.log(err);
-      res.status(500).send();
+      return res.status(500).send();
     }
     return res.status(200).send();
   });
@@ -225,7 +235,7 @@ router.post('/travel/create-article', (req, res) => {
   newTravelArticle.save(err => {
     if (err) {
       console.log(err);
-      res.status(500).send();
+      return res.status(500).send();
     }
     return res.status(200).send();
   });
@@ -237,7 +247,7 @@ router.post('/wine/create-article', (req, res) => {
   newWineArticle.save(err => {
     if (err) {
       console.log(err);
-      res.status(500).send();
+      return res.status(500).send();
     }
     return res.status(200).send();
   });

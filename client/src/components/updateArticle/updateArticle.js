@@ -48,10 +48,14 @@ class UpdateArticle extends Component {
       {
         this.state.articleSelected
         ?
-        <UpdateArticleForm
-          article={this.state.selectedArticle}
-          articleData={this.props.articleData}
-        />
+        <React.Fragment>
+          <button className="btn btn-link" onClick={() => this.setState({articleSelected: false})}><i className="fas fa-arrow-left"></i> Return To List</button>
+          <UpdateArticleForm
+            article={this.state.selectedArticle}
+            articleAuthor={this.props.articleAuthor}
+            articleData={this.props.articleData}
+          />
+        </React.Fragment>
         :
           this.state.articlesLoaded
           ?

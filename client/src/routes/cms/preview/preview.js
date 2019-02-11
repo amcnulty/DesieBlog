@@ -5,13 +5,6 @@ import TravelArticle from '../../../routes/travel/travelArticle/travelArticle';
 import WineArticle from '../../../routes/wine/wineArticle/wineArticle';
 import './preview.css';
 
-const articleMap = {
-  book: <BookArticle />,
-  recipes: <RecipeArticle />,
-  travel: <TravelArticle />,
-  wine: <WineArticle />
-}
-
 class Preview extends Component {
 
   constructor(props) {
@@ -26,15 +19,31 @@ class Preview extends Component {
   }
 
   getArticleType = () => {
-    articleMap[this.state.type].props = {
-      article: this.state.articleData,
-      preview: true
-    };
-    return articleMap[this.state.type];
+    switch (this.state.type) {
+      case 'book':
+        return <BookArticle
+          article={this.state.articleData}
+          preview={true}
+        />
+      case 'recipes':
+        return <RecipeArticle
+          article={this.state.articleData}
+          preview={true}
+        />
+      case 'travel':
+        return <TravelArticle
+          article={this.state.articleData}
+          preview={true}
+        />
+      case 'wine':
+        return <WineArticle
+          article={this.state.articleData}
+          preview={true}
+        />
+    }
   }
 
   render() {
-
     return (
       <div className="Preview">
         {this.getArticleType()}
