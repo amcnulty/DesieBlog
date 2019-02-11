@@ -3,6 +3,7 @@ import DashboardTabView from '../../../../components/dashboardTabView/dashboardT
 import ArticleEditor from '../../../../components/articleEditor/articleEditor';
 import UpdateArticle from '../../../../components/updateArticle/updateArticle';
 import articleData from '../../../../lib/dashboardTabViewData.json';
+import DeleteArticle from '../../../../components/deleteArticle/deleteArticle';
 import './manageWine.css';
 
 const ManageWine = props => {
@@ -18,7 +19,9 @@ const ManageWine = props => {
           articleAuthor={props.user.data.displayName}
           articleData={articleData.Wine}
         />
-        <span>Tab content 3</span>
+        <DeleteArticle
+          kind="Wine"
+        />
       </DashboardTabView>
     </div>
   )

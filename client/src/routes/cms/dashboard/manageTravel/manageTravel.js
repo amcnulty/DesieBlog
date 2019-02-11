@@ -3,6 +3,7 @@ import DashboardTabView from '../../../../components/dashboardTabView/dashboardT
 import ArticleEditor from '../../../../components/articleEditor/articleEditor';
 import UpdateArticle from '../../../../components/updateArticle/updateArticle';
 import articleData from '../../../../lib/dashboardTabViewData.json';
+import DeleteArticle from '../../../../components/deleteArticle/deleteArticle';
 import './manageTravel.css';
 
 const ManageTravel = props => {
@@ -18,7 +19,9 @@ const ManageTravel = props => {
           articleAuthor={props.user.data.displayName}
           articleData={articleData.Travel}
         />
-        <span>Tab content 3</span>
+        <DeleteArticle
+          kind="Travel"
+        />
       </DashboardTabView>
     </div>
   )
