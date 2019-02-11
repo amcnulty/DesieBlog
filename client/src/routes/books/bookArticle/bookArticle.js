@@ -71,7 +71,7 @@ class BookArticle extends Component {
                 <h1>{this.state.article.title}</h1>
                 <ol className="list-unstyled">
                   {this.state.article.authors.map(author => {
-                    return <li>{author}</li>
+                    return <li key={author}>{author}</li>
                   })}
                 </ol>
                 <img className="bookImage mb-5" src={this.state.article.bookImage} alt="Article Thumbnail"/>

@@ -52,7 +52,7 @@
   },
   "Recipes": {
     "type": "recipes",
-    "kind": "Recipes",
+    "kind": "Recipe",
     "relativePath": "/recipes/",
     "fields": [
       {

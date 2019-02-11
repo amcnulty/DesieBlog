@@ -1,6 +1,6 @@
-.CreateArticle .editor {
+.ArticleEditor .editor {
   background-color: white;
   height: 600px; }
 
-.CreateArticle .preview {
+.ArticleEditor .preview {
   height: 300px; }

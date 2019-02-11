@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import {Card, CardBody, CardHeader, Modal, ModalHeader, ModalBody, ModalFooter, Button } from 'reactstrap';
 import ArticleThumbnail from '../../components/articleThumbnail/articleThumbnail';
 import { API } from '../../util/api';
@@ -7,32 +7,61 @@ import { EditorState, convertToRaw } from 'draft-js';
 import { Editor } from 'react-draft-wysiwyg';
 import draftToHtml from 'draftjs-to-html';
 import '../../../node_modules/react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
-import './createArticle.css';
+import './articleEditor.css';
 
-class CreateArticle extends Component {
+class ArticleEditor extends Component {
 
   constructor(props) {
     super(props);
-    this.state = {
-      title: '',
-      urlTitle: '',
-      path: '',
-      thumbnailImage: '',
-      bannerText: '',
-      body: '',
-      modal: false,
-      editorState: EditorState.createEmpty()
+    if (this.props.mode === 'create') {
+      const customInputStates = {};
+      this.props.articleData.inputs.forEach(input => {
+        if (input.type === 'chip') customInputStates[input.id] = [];
+        else customInputStates[input.id] = ''
+      });
+      this.state = {
+        title: '',
+        urlTitle: '',
+        path: '',
+        thumbnailImage: '',
+        bannerText: '',
+        body: '',
+        ...customInputStates,
+        modal: false,
+        editorState: EditorState.createEmpty()
+      }
     }
-    this.props.articleData.inputs.forEach(input => {
-      if (input.type === 'chip') this.state[input.id] = [];
-      else this.state[input.id] = '';
-    });
+    else if (this.props.mode === 'update') {
+      this.state = {
+        ...this.props.article,
+        modal: false
+      }
+    }
+  }
+  
+  componentWillMount() {
+    if (this.props.mode === 'update') {
+      this.setInputs();
+    }
   }
 
   previewArticle = () => {
     localStorage.setItem('articleData', JSON.stringify(this.getArticleData()));
     localStorage.setItem('type', this.props.articleData.type);
     window.open('/cms/preview', '_blank');
+  }
+  
+  updateArticle = () => {
+    const commandMap = {
+      book: API.updateBookArticle,
+      recipes: API.updateRecipeArticle,
+      travel: API.updateTravelArticle,
+      wine: API.updateWineArticle
+    }
+    commandMap[this.props.articleData.type](this.state._id, this.getArticleData(), (err, res) => {
+      if (err) console.log(err);
+      else this.toggle();
+    });
   }
   
   saveArticle = () => {
@@ -48,22 +77,25 @@ class CreateArticle extends Component {
       req[field.name] = this.state[field.value];
     });
     req.body = draftToHtml(convertToRaw(this.state.editorState.getCurrentContent()));
-    console.log('req :', req);
     commandMap[this.props.articleData.type](req, (err, status) => {
       if (err) console.log(err);
-      console.log(status);
       if (status === 200) this.toggle();
     });
   }
 
   getArticleData = () => {
-    const req = {};
-    req.author = this.props.articleAuthor;
+    const data = {};
+    data.author = this.props.articleAuthor;
     this.props.articleData.fields.forEach(field => {
-      req[field.name] = this.state[field.value];
+      data[field.name] = this.state[field.value];
     });
-    req.body = draftToHtml(convertToRaw(this.state.editorState.getCurrentContent()));
-    return req;
+    if (this.props.mode === 'create') {
+      data.body = draftToHtml(convertToRaw(this.state.editorState.getCurrentContent()));
+    }
+    else if (this.props.mode === 'update') {
+      data.body = this.state.body;
+    }
+    return data;
   }
 
   onEditorStateChange = (editorState) => {
@@ -98,6 +130,14 @@ class CreateArticle extends Component {
     });
   }
 
+  setInputs = () => {
+    this.props.articleData.inputs.forEach(input => {
+      this.setState({
+        [input.id]: this.state[this.props.articleData.fields.find(field => field.value === input.id).name]
+      });
+    });
+  }
+
   getInputs = () => {
     return this.props.articleData.inputs.map(input => {
       return (
@@ -114,6 +154,7 @@ class CreateArticle extends Component {
           :
           <ChipInput
             className="form-control"
+            value={this.state[input.id]}
             onChange={(chips) => this.handleChangeChips(chips, input.id)}
           /> }
         </div>
@@ -128,7 +169,7 @@ class CreateArticle extends Component {
   render() {
     const {editorState} = this.state;
     return (
-      <div className="CreateArticle mb-5">
+      <div className="ArticleEditor mb-5">
         <div className="row align-items-center">
           <div className="col-lg-7 col-12">
             <h3>Article Thumbnail Information</h3>
@@ -140,7 +181,7 @@ class CreateArticle extends Component {
                 type="text"
                 value={this.state.title}
                 onChange={(event) => {this.handleChange(event); this.setTitle(event)}}
-                />
+              />
             </div>
             <div className="form-group">
               <label htmlFor="urlTitle">Url Title</label>
@@ -160,7 +201,7 @@ class CreateArticle extends Component {
                 readOnly={true}
                 type="text"
                 value={this.state.path}
-                placeholder={`${this.props.articleData.relativePath}path-to-article`}
+                placeholder={`${this.getPath()}path-to-article`}
               />
             </div>
             <div className="form-group">
@@ -201,28 +242,57 @@ class CreateArticle extends Component {
         <div className="row justify-content-center">
           <div className="col-xl-10 col-md-11">
             <h3 className="text-center">Article Body</h3>
-            <Editor
-              editorState={editorState}
-              onEditorStateChange={this.onEditorStateChange}
-              wrapperClassName="editorWrapper"
-              toolbarClassName="toolbar"
-              editorClassName="editor"
-            />
-            <textarea
-              className="preview w-100 mt-3"
-              disabled={true}
-              value={(!!editorState) ? draftToHtml(convertToRaw(editorState.getCurrentContent())) : ''}
-            />
+            {
+              this.props.mode === 'create'
+              ?
+              <React.Fragment>
+                <Editor
+                  editorState={editorState}
+                  onEditorStateChange={this.onEditorStateChange}
+                  wrapperClassName="editorWrapper"
+                  toolbarClassName="toolbar"
+                  editorClassName="editor"
+                />
+                <textarea
+                  className="preview w-100 mt-3"
+                  disabled={true}
+                  value={(!!editorState) ? draftToHtml(convertToRaw(editorState.getCurrentContent())) : ''}
+                />
+              </React.Fragment>
+              :
+              <textarea
+                id="body"
+                className="w-100"
+                value={this.state.body}
+                onChange={this.handleChange}
+              />
+            }
           </div>
           <div className="col-lg-7 col-12 d-flex">
-            <button className="btn btn-success w-50 mr-3" onClick={this.saveArticle}>Save Article</button>
+            {
+              this.props.mode === 'create'
+              ?
+              <button
+                className="btn btn-success w-50 mr-3"
+                onClick={this.saveArticle}
+              >
+                Save Article
+              </button>
+              :
+              <button
+                className="btn btn-success w-50 mr-3"
+                onClick={this.updateArticle}
+              >
+                Update Article
+              </button>
+            }
             <button className="btn btn-primary w-50" onClick={this.previewArticle}>Preview Article</button>
           </div>
         </div>
         <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
           <ModalHeader toggle={this.toggle}><i className="fas fa-exclamation-triangle"></i> Information</ModalHeader>
           <ModalBody>
-            Article Save Successful!
+            Article {this.props.mode === 'create' ? 'Save' : 'Update'} Successful!
           </ModalBody>
           <ModalFooter>
             <Button color="primary" onClick={this.toggle}>OK</Button>{' '}
@@ -233,4 +303,4 @@ class CreateArticle extends Component {
   }
 }
 
-export default CreateArticle;
+export default ArticleEditor;

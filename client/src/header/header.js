@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import HeaderSearch from './headerSearch/headerSeach';
-import { Nav, NavItem, Collapse, Navbar, NavbarBrand, NavbarToggler, NavLink } from 'reactstrap';
+import { Nav, NavItem, Collapse, Navbar, NavbarToggler, NavLink } from 'reactstrap';
 import './header.css';
 
 const headerInitialHeight = 190;

@@ -7,10 +7,6 @@ import './preview.css';
 
 class Preview extends Component {
 
-  constructor(props) {
-    super(props);
-  }
-
   componentWillMount() {
     this.setState({ articleData: JSON.parse(localStorage.getItem('articleData')) })
     this.setState({ type: localStorage.getItem('type')});
@@ -40,6 +36,8 @@ class Preview extends Component {
           article={this.state.articleData}
           preview={true}
         />
+      default:
+        return <h1>Something went terribly wrong...</h1>
     }
   }
 

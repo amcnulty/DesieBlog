@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { API } from '../../util/api';
 import ArticleList from '../articleList/articleList';
-import UpdateArticleForm from '../updateArticleForm/updateArticleForm';
+import ArticleEditor from '../articleEditor/articleEditor';
 import './updateArticle.css';
 
 class UpdateArticle extends Component {
@@ -17,6 +17,11 @@ class UpdateArticle extends Component {
   }
 
   componentDidMount = () => {
+    this.loadArticles();
+  }
+
+  loadArticles = () => {
+    this.setState({articlesLoaded: false});
     API.getArticlesByKind(this.props.articleData.kind, (err, articles) => {
       if (err) {
         console.log(err);
@@ -36,7 +41,6 @@ class UpdateArticle extends Component {
         console.log(err);
       }
       else {
-        console.log(res.data);
         this.setState({articleSelected: true, selectedArticle: res.data});
       }
     })
@@ -50,7 +54,8 @@ class UpdateArticle extends Component {
         ?
         <React.Fragment>
           <button className="btn btn-link" onClick={() => this.setState({articleSelected: false})}><i className="fas fa-arrow-left"></i> Return To List</button>
-          <UpdateArticleForm
+          <ArticleEditor
+            mode="update"
             article={this.state.selectedArticle}
             articleAuthor={this.props.articleAuthor}
             articleData={this.props.articleData}
@@ -61,6 +66,9 @@ class UpdateArticle extends Component {
           ?
           <React.Fragment>
             <h1 className="text-center">Choose Article To Edit</h1>
+            <div className="filterBar d-flex flex-row-reverse mx-5">
+              <button className="btn btn-link" type="button" onClick={() => this.loadArticles()}><i className="fas fa-sync-alt"></i> Refresh</button>
+            </div>
             <ArticleList
               articles={this.state.articles}
               inEditor={true}

@@ -62,7 +62,7 @@ class ImageList extends Component {
           ?
           <React.Fragment>
             <div className="filterBar d-flex flex-row-reverse mx-5">
-              <button className="btn btn-link" type="button" onClick={() => this.getImages(true)}>Refresh <i className="fas fa-sync-alt"></i></button>
+              <button className="btn btn-link" type="button" onClick={() => this.getImages(true)}><i className="fas fa-sync-alt"></i> Refresh</button>
             </div>
             <div className="row">
               {
