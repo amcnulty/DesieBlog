@@ -52,13 +52,7 @@ class ArticleEditor extends Component {
   }
   
   updateArticle = () => {
-    const commandMap = {
-      book: API.updateBookArticle,
-      recipes: API.updateRecipeArticle,
-      travel: API.updateTravelArticle,
-      wine: API.updateWineArticle
-    }
-    commandMap[this.props.articleData.type](this.state._id, this.getArticleData(), (err, res) => {
+    API.updateArticle(this.state._id, this.getArticleData(), (err, res) => {
       if (err) console.log(err);
       else this.toggle();
     });

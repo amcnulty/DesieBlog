@@ -195,7 +195,36 @@ router.get('/article-data', (req, res) => {
   });
 });
 
+router.put('/article/update-article/:id', (req, res) => {
+  if (!req.session.user) {
+    return res.status(401).send();
+  }
+  Article.findByIdAndUpdate(req.params.id, req.body, (err, article) => {
+    if (err) {
+      console.log(err);
+      return res.status(500).send();
+    }
+    return res.status(200).send();
+  });
+});
+
+router.delete('/article/:id', (req, res) => {
+  if (!req.session.user) {
+    return res.status(401).send();
+  }
+  Article.findByIdAndDelete(req.params.id, (err, article) => {
+    if (err) {
+      console.log(err);
+      return res.status(500).send();
+    }
+    return res.status(200).send();
+  });
+});
+
 router.post('/books/create-article', (req, res) => {
+  if (!req.session.user) {
+    return res.status(401).send();
+  }
   const newBookArticle = new BookArticle(req.body);
 
   newBookArticle.save(err => {
@@ -207,17 +236,10 @@ router.post('/books/create-article', (req, res) => {
   });
 });
 
-router.put('/books/update-article/:id', (req, res) => {
-  BookArticle.findOneAndUpdate( {_id: req.params.id}, req.body, (err, article) => {
-    if (err) {
-      console.log(err);
-      return res.status(500).send();
-    }
-    return res.status(200).send();
-  });
-})
-
 router.post('/recipes/create-article', (req, res) => {
+  if (!req.session.user) {
+    return res.status(401).send();
+  }
   const newRecipeArticle = new RecipeArticle(req.body);
 
   newRecipeArticle.save(err => {

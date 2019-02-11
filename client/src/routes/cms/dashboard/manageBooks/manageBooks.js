@@ -4,6 +4,7 @@ import ArticleEditor from '../../../../components/articleEditor/articleEditor';
 import UpdateArticle from '../../../../components/updateArticle/updateArticle';
 import articleData from '../../../../lib/dashboardTabViewData.json';
 import './manageBooks.css';
+import DeleteArticle from '../../../../components/deleteArticle/deleteArticle';
 
 const ManageBooks = props => {
   return (
@@ -18,7 +19,9 @@ const ManageBooks = props => {
           articleAuthor={props.user.data.displayName}
           articleData={articleData.Books}
         />
-        <span>Tab content 3</span>
+        <DeleteArticle
+          kind="Book"
+        />
       </DashboardTabView>
     </div>
   )

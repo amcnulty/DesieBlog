@@ -53,7 +53,12 @@ class UpdateArticle extends Component {
         this.state.articleSelected
         ?
         <React.Fragment>
-          <button className="btn btn-link" onClick={() => this.setState({articleSelected: false})}><i className="fas fa-arrow-left"></i> Return To List</button>
+          <button
+            className="btn btn-link"
+            onClick={() => this.setState({articleSelected: false})}
+          >
+            <i className="fas fa-arrow-left"></i> Return To List
+          </button>
           <ArticleEditor
             mode="update"
             article={this.state.selectedArticle}
@@ -67,7 +72,13 @@ class UpdateArticle extends Component {
           <React.Fragment>
             <h1 className="text-center">Choose Article To Edit</h1>
             <div className="filterBar d-flex flex-row-reverse mx-5">
-              <button className="btn btn-link" type="button" onClick={() => this.loadArticles()}><i className="fas fa-sync-alt"></i> Refresh</button>
+              <button
+                className="btn btn-link"
+                type="button"
+                onClick={() => this.loadArticles()}
+              >
+                <i className="fas fa-sync-alt"></i> Refresh
+              </button>
             </div>
             <ArticleList
               articles={this.state.articles}
@@ -77,7 +88,7 @@ class UpdateArticle extends Component {
           </React.Fragment>
           :
           <div className="d-flex justify-content-center">
-            <h3>Loading Images...</h3>
+            <h3>Loading Articles...</h3>
             <div className="spinner-grow text-primary" role="status">
               <span className="sr-only">Loading...</span>
             </div>

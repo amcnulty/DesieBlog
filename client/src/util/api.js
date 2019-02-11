@@ -70,6 +70,31 @@ export const API = {
       callback(err, err);
     });
   },
+  /**
+   * PUT request to update an existing article.
+   * @param id The id of the article to update.
+   * @param article Updated article information object
+   * @param callback Callback method with the api response.
+   */
+  updateArticle: (id, article, callback) => {
+    axios.put(localHost + '/api/article/update-article/' + id, article, config)
+    .then(res => {
+      callback(null, res);
+    })
+    .catch(err => {
+      callback(err, err);
+    });
+  },
+  /**
+   * Deletes the article of the given id.
+   * @param id Id of the article to delete.
+   * @param callback Callback method with the api response.
+   */
+  deleteArticle: (id, callback) => {
+    axios.delete(localHost + '/api/article/' + id, config)
+    .then(res => callback(null, res))
+    .catch(err => callback(err, err));
+  },
   
   /*
   *          !!##########################!!
@@ -85,24 +110,9 @@ export const API = {
    * @param callback Callback method with the api response.
    */
   createBookArticle: (data, callback) => {
-    axios.post(localHost + '/api/books/create-article', data)
+    axios.post(localHost + '/api/books/create-article', data, config)
     .then(res => {
       callback(null, res.status);
-    })
-    .catch(err => {
-      callback(err, err);
-    });
-  },
-  /**
-   * PUT request to update an existing book article.
-   * @param id The id of the book article to update.
-   * @param article Updated article information object
-   * @param callback Callback method with the api response.
-   */
-  updateBookArticle: (id, article, callback) => {
-    axios.put(localHost + '/api/books/update-article/' + id, article)
-    .then(res => {
-      callback(null, res);
     })
     .catch(err => {
       callback(err, err);
@@ -122,24 +132,9 @@ export const API = {
    * @param callback Callback method with the api response.
    */
   createRecipeArticle: (data, callback) => {
-    axios.post(localHost + '/api/recipes/create-article', data)
+    axios.post(localHost + '/api/recipes/create-article', data, config)
     .then(res => {
       callback(null, res.status);
-    })
-    .catch(err => {
-      callback(err, err);
-    });
-  },
-  /**
-   * PUT request to update an existing recipe article.
-   * @param id The id of the recipe article to update.
-   * @param article Updated article information object
-   * @param callback Callback method with the api response.
-   */
-  updateRecipeArticle: (id, article, callback) => {
-    axios.put(localHost + '/api/recipes/update-article/' + id, article)
-    .then(res => {
-      callback(null, res);
     })
     .catch(err => {
       callback(err, err);
@@ -167,21 +162,6 @@ export const API = {
       callback(err, err);
     });
   },
-  /**
-   * PUT request to update an existing travel article.
-   * @param id The id of the travel article to update.
-   * @param article Updated article information object
-   * @param callback Callback method with the api response.
-   */
-  updateTravelArticle: (id, article, callback) => {
-    axios.put(localHost + '/api/travel/update-article/' + id, article)
-    .then(res => {
-      callback(null, res);
-    })
-    .catch(err => {
-      callback(err, err);
-    });
-  },
   /*
    *          !!##########################!!
    *          !!                          !!
@@ -199,21 +179,6 @@ export const API = {
     axios.post(localHost + '/api/wine/create-article', data)
     .then(res => {
       callback(null, res.status);
-    })
-    .catch(err => {
-      callback(err, err);
-    });
-  },
-  /**
-   * PUT request to update an existing wine article.
-   * @param id The id of the wine article to update.
-   * @param article Updated article information object
-   * @param callback Callback method with the api response.
-   */
-  updateWineArticle: (id, article, callback) => {
-    axios.put(localHost + '/api/wine/update-article/' + id, article)
-    .then(res => {
-      callback(null, res);
     })
     .catch(err => {
       callback(err, err);
