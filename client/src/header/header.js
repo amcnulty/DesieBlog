@@ -105,12 +105,14 @@ class SiteHeader extends Component {
       >
         <Navbar light expand="md">
           <NavbarToggler onClick={() => this.toggle('mobileNavbarIsOpen')}/>
-          <img
-            className="desieBlogLogo"
-            src="/res/images/DesieBlog_Logo.png"
-            alt="DesieBlog"
-            style={{height: this.state.logoHeight, top: this.state.logoTop}}
-          />
+          <a href="/">
+            <img
+              className="desieBlogLogo"
+              src="/res/images/DesieBlog_Logo.png"
+              alt="DesieBlog"
+              style={{height: this.state.logoHeight, top: this.state.logoTop}}
+            />
+          </a>
           <Collapse isOpen={this.state.mobileNavbarIsOpen} navbar>
             <Nav className="mr-auto" navbar>
               <NavItem className="mr-auto">

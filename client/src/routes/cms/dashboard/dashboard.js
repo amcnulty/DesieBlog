@@ -49,7 +49,7 @@ class Dashboard extends Component {
             <Route path={`${this.props.match.path}/wine`} render={props => <ManageWine user={this.state.user}/>} />
             <Route path={`${this.props.match.path}/account-settings`} component={AccountSettings}/>
             <Route path={`${this.props.match.path}/manage-images`} component={ManageImages}/>
-            <Route exact path={this.props.match.path} component={Overview}/>
+            <Route exact path={this.props.match.path} render={props => <Overview user={this.state.user}/>} /> 
           </div>
         </div>
       </div>

@@ -351,6 +351,20 @@ router.get('/images', (req, res) => {
   });
 });
 
+router.get('/images/usage', (req, res) => {
+  if (!req.session.user) {
+    return res.status(401).send();
+  }
+  axios.get(`https://${process.env.API_KEY}:${process.env.API_SECRET}@api.cloudinary.com/v1_1/${process.env.CLOUD_NAME}/usage`)
+  .then(response => {
+    return res.status(200).send(response.data);
+  })
+  .catch(err => {
+    console.log(err);
+    return res.status(500).send(err);
+  });
+});
+
 router.delete('/images/:id', (req, res) => {
   if (!req.session.user) {
     return res.status(401).send();

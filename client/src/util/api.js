@@ -235,6 +235,12 @@ export const API = {
    *          !!##########################!!
    */
 
+  getImageUsageInformation: (callback) => {
+    axios.get(localHost + '/api/images/usage', config)
+    .then(res => callback(null, res))
+    .catch(err => callback(err, err));
+  },
+
   uploadImage: (file, tags, callback) => {
     axios.get(localHost + '/api/image-upload-credentials', config)
     .then(res => {

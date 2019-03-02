@@ -78,18 +78,9 @@
       {
         "name": "body",
         "value": "body"
-      },
-      {
-        "name": "mainImage",
-        "value": "mainImageInput"
       }
     ],
     "inputs": [
-      {
-        "label": "Main Image",
-        "id": "mainImageInput",
-        "type": "text"
-      }
     ]
   },
   "Travel": {
@@ -120,18 +111,9 @@
       {
         "name": "body",
         "value": "body"
-      },
-      {
-        "name": "mainImage",
-        "value": "mainImageInput"
       }
     ],
     "inputs": [
-      {
-        "label": "Main Image",
-        "id": "mainImageInput",
-        "type": "text"
-      }
     ]
   },
   "Wine": {
@@ -162,18 +144,9 @@
       {
         "name": "body",
         "value": "body"
-      },
-      {
-        "name": "mainImage",
-        "value": "mainImageInput"
       }
     ],
     "inputs": [
-      {
-        "label": "Main Image",
-        "id": "mainImageInput",
-        "type": "text"
-      }
     ]
   }
 }
