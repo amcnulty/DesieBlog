@@ -136,10 +136,10 @@ router.post('/articles/adjacent', (req, res) => {
       }
       else return false;
     });
-    if (currentArticleIndex > 0) adjacentArticles.previous = articles[currentArticleIndex - 1];
-    else adjacentArticles.previous = articles[articles.length - 1];
-    if (currentArticleIndex < articles.length - 1) adjacentArticles.next = articles[currentArticleIndex + 1];
-    else adjacentArticles.next = articles[0];
+    if (currentArticleIndex > 0) adjacentArticles.next = articles[currentArticleIndex - 1];
+    else adjacentArticles.next = articles[articles.length - 1];
+    if (currentArticleIndex < articles.length - 1) adjacentArticles.previous = articles[currentArticleIndex + 1];
+    else adjacentArticles.previous = articles[0];
     return res.status(200).send(adjacentArticles);
   });
 });

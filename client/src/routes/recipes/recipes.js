@@ -18,7 +18,7 @@ class Recipes extends Component {
       if (err) console.log(err);
       else {
         this.setState({
-          articles: res.data
+          articles: res.data.reverse()
         });
       }
     });

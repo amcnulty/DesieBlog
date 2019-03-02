@@ -28,7 +28,7 @@ class UpdateArticle extends Component {
       }
       else {
         this.setState({
-          articles: articles.data,
+          articles: articles.data.reverse(),
           articlesLoaded: true
         });
       }
