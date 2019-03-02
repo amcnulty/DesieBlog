@@ -1,10 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './home.css';
+import AdComponent from '../../components/adComponent/adComponent';
 
 const Home = props => {
   return (
     <div className="Home">
+      <AdComponent/>
       <div className="mx-md-5 mx-4">
         <div className="row">
           <div className="col col-sm-10 offset-sm-1 col-lg-10 offset-lg-1 col-xl-10 offset-xl-1">

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import ArticleList from '../../components/articleList/articleList';
 import { API } from '../../util/api';
 import './wine.css';
+import AdComponent from '../../components/adComponent/adComponent';
 
 class Wine extends Component {
 
@@ -26,6 +27,7 @@ class Wine extends Component {
   render() {
     return (
       <div className="Wine">
+        <AdComponent/>
         <div className="mx-md-5 mx-4">
           <ArticleList articles={this.state.articles}/>
         </div>

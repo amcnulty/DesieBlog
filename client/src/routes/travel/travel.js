@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import ArticleList from '../../components/articleList/articleList';
 import { API } from '../../util/api';
 import './travel.css';
+import AdComponent from '../../components/adComponent/adComponent';
 
 class Travel extends Component {
 
@@ -26,6 +27,7 @@ class Travel extends Component {
   render() {
     return (
       <div className="Travel">
+        <AdComponent/>
         <div className="mx-md-5 mx-4">
           <ArticleList articles={this.state.articles}/>
         </div>
