@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import ArticleList from '../../components/articleList/articleList';
 import { API } from '../../util/api';
 import './recipes.css';
-import AdComponent from '../../components/adComponent/adComponent';
 
 class Recipes extends Component {
 
@@ -27,7 +26,6 @@ class Recipes extends Component {
   render() {
     return (
       <div className="Recipes">
-        <AdComponent/>
         <div className="mx-md-5 mx-4">
           <ArticleList articles={this.state.articles}/>
         </div>

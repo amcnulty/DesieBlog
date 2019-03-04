@@ -3,7 +3,6 @@ import { Row, Col } from 'reactstrap';
 import ArticleNavigator from '../../../components/articleNavigator/ArticleNavigator';
 import { API } from '../../../util/api';
 import './wineArticle.css';
-import AdComponent from '../../../components/adComponent/adComponent';
 
 class WineArticle extends Component {
 
@@ -59,7 +58,6 @@ class WineArticle extends Component {
     return (
       this.state.article ? (
         <div className="WineArticle mx-md-5 mx-4 mb-5">
-          <AdComponent/>
           <Row>
             <Col>
               { !!this.state.adjacentArticles ? <ArticleNavigator articles={this.state.adjacentArticles}/> : ''}
