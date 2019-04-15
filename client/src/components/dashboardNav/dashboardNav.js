@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import { Nav, NavItem, Collapse, Navbar, NavbarToggler, NavbarBrand, NavLink, UncontrolledDropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
 import './dashboardNav.css';
+import { API } from '../../util/api';
 
 class DashboardNav extends Component {
 
@@ -19,6 +20,14 @@ class DashboardNav extends Component {
 
   checkIfActive = path => {
     return this.props.location.pathname === path;
+  }
+
+  handleLogOut = event => {
+    event.preventDefault();
+    API.logoutUser((err, status) => {
+      if (err) console.log(err);
+      if (status === 200) this.props.history.push('/cms');
+    });
   }
 
   render() {
@@ -68,6 +77,11 @@ class DashboardNav extends Component {
                 <i className="far fa-image"></i> Manage Images
               </NavItem>
             </Link>
+            <a href="javascript:void(0)" onClick={e => this.handleLogOut(e)}>
+              <li className="inactive nav-item">
+                <i className="fas fa-sign-out-alt"></i> Log Out
+              </li>
+            </a>
           </Nav>
         </div>
         <div className="DashboardNavMobile col-12 px-0 d-md-none">
@@ -100,6 +114,9 @@ class DashboardNav extends Component {
                 </NavItem>
                 <NavItem>
                   <NavLink href={`${this.props.match.url}/manage-images`}><i className="far fa-image"></i> Manage Images</NavLink>
+                </NavItem>
+                <NavItem>
+                  <NavLink href="javascript:void(0)" onClick={e => this.handleLogOut(e)}><i className="fas fa-sign-out-alt"></i> Log Out</NavLink>
                 </NavItem>
               </Nav>
             </Collapse>

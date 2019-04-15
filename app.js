@@ -4,11 +4,11 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 require('dotenv').config();
-require('./db/connection');
+var mongoose = require('./db/connection');
 bcrypt = require('bcrypt');
 SALT_WORK_FACTOR = 10;
 var session = require('express-session');
-
+var MongoStore = require('connect-mongo')(session);
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
@@ -27,8 +27,9 @@ app.use(cookieParser());
 app.use(express.static('client/build'));
 app.use(session({
   secret: process.env.secretKey,
+  saveUninitialized: false,
   resave: false,
-  saveUninitialized: false
+  store: new MongoStore({ mongooseConnection: mongoose.connection })
 }));
 
 app.use(function(req, res, next) {
