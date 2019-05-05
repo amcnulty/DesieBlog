@@ -36,7 +36,7 @@ router.get('/user-present', function(req, res) {
 });
 
 router.post('/create', (req, res) => {
-  if (!req.session.user) {
+  if (!req.session.user || !req.session.user.isAdmin) {
     return res.status(401).send();
   }
   const newUser = new User({
@@ -67,7 +67,37 @@ router.post('/create', (req, res) => {
       });
     }
   });
+});
 
+router.get('/get-all-users', (req, res) => {
+  if (!req.session.user || !req.session.user.isAdmin) {
+    return res.status(401).send();
+  }
+  User.find((err, users) => {
+    if (err) {
+      console.log(err);
+      return res.status(500).send();
+    }
+    return res.status(200).send(users);
+  });
+});
+
+router.delete('/user/:id', (req, res) => {
+  if (!req.session.user || !req.session.user.isAdmin) {
+    return res.status(401).send();
+  }
+  User.findByIdAndDelete(req.params.id, (err, user) => {
+    if (err) {
+      console.log(err);
+      return res.status(500).send();
+    }
+    if (!user) {
+      return res.status(404).send();
+    }
+    else {
+      return res.status(200).send();
+    }
+  });
 });
 
 module.exports = router;

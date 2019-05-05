@@ -241,6 +241,26 @@ export const API = {
       callback(err, null);
     });
   },
+  
+  getAllUsers: callback => {
+    axios.get(localHost + '/users/get-all-users', config)
+    .then(res => {
+      callback(null, res);
+    })
+    .catch(err => {
+      callback(err, null);
+    });
+  },
+
+  deleteUser: (data, callback) => {
+    axios.delete(localHost + '/users/user/' + data._id, config)
+    .then(res => {
+      callback(null, res);
+    })
+    .catch(err => {
+      callback(err, null);
+    });
+  },
   /*
    *          !!##########################!!
    *          !!                          !!

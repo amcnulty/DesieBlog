@@ -78,6 +78,7 @@ class CreateUserForm extends Component {
               toast.success("User Created!", {
                 position: toast.POSITION.BOTTOM_CENTER
               });
+              this.props.refresh();
             }
           }
         });
@@ -88,8 +89,8 @@ class CreateUserForm extends Component {
   render() {
     return (
       <React.Fragment>
-        <h3>Create New User</h3>
-        <Form>
+        <h3 className="mt-4">Create New User</h3>
+        <Form className="mb-5">
           <FormGroup>
             <Label for="username">Username</Label>
             <Input
