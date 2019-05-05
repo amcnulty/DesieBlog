@@ -12,11 +12,11 @@ const ManageWine = props => {
       <DashboardTabView>
         <ArticleEditor
           mode="create"
-          articleAuthor={props.user.data.displayName}
+          articleAuthor={props.user.displayName}
           articleData={articleData.Wine}
         />
         <UpdateArticle
-          articleAuthor={props.user.data.displayName}
+          articleAuthor={props.user.displayName}
           articleData={articleData.Wine}
         />
         <DeleteArticle

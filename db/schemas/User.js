@@ -4,7 +4,8 @@ let userSchema = mongoose.Schema({
   username: String,
   usernameLowercase: {type: String, unique: true},
   displayName: String,
-  password: String
+  password: String,
+  isAdmin: Boolean
 });
 
 userSchema.pre('save', function(next) {

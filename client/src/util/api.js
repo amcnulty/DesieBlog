@@ -227,6 +227,20 @@ export const API = {
       callback(err, err);
     });
   },
+  /**
+   * Creates a user record.
+   * @param data User information
+   * @param callback The response from the request.
+   */
+  createUser: (data, callback) => {
+    axios.post(localHost + '/users/create', data, config)
+    .then(res => {
+      callback(null, res);
+    })
+    .catch(err => {
+      callback(err, null);
+    });
+  },
   /*
    *          !!##########################!!
    *          !!                          !!

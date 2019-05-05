@@ -77,6 +77,17 @@ class DashboardNav extends Component {
                 <i className="far fa-image"></i> Manage Images
               </NavItem>
             </Link>
+            {
+              this.props.user.isAdmin
+              ?
+              <Link to={`${this.props.match.url}/manage-users`}>
+                <NavItem className={this.checkIfActive('/cms/dashboard/manage-users') ? 'active' : 'inactive'}>
+                  <i className="fas fa-users"></i> Manage Users
+                </NavItem>
+              </Link>
+              :
+              null
+            }
             <a href="javascript:void(0)" onClick={e => this.handleLogOut(e)}>
               <li className="inactive nav-item">
                 <i className="fas fa-sign-out-alt"></i> Log Out
@@ -115,6 +126,15 @@ class DashboardNav extends Component {
                 <NavItem>
                   <NavLink href={`${this.props.match.url}/manage-images`}><i className="far fa-image"></i> Manage Images</NavLink>
                 </NavItem>
+                {
+                  this.props.user.isAdmin
+                  ?
+                  <NavItem>
+                    <NavLink href={`${this.props.match.url}/manage-users`}><i className="fas fa-users"></i> Manage Users</NavLink>
+                  </NavItem>
+                  :
+                  null
+                }
                 <NavItem>
                   <NavLink href="javascript:void(0)" onClick={e => this.handleLogOut(e)}><i className="fas fa-sign-out-alt"></i> Log Out</NavLink>
                 </NavItem>

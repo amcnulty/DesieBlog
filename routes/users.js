@@ -36,19 +36,38 @@ router.get('/user-present', function(req, res) {
 });
 
 router.post('/create', (req, res) => {
+  if (!req.session.user) {
+    return res.status(401).send();
+  }
   const newUser = new User({
     username: req.body.username,
     usernameLowercase: req.body.username.toLowerCase(),
-    password: req.body.password
+    displayName: req.body.displayName,
+    password: req.body.password,
+    isAdmin: req.body.isAdmin
   });
 
-  newUser.save(err => {
+  User.findOne({
+    usernameLowercase: newUser.usernameLowercase
+  }, (err, user) => {
     if (err) {
       console.log(err);
       return res.status(500).send();
     }
-    return res.status(200).send();
+    if (user) {
+      return res.status(202).send({errorMessage: 'The requested username is already taken!!'});
+    }
+    else {
+      newUser.save(err => {
+        if (err) {
+          console.log(err);
+          return res.status(500).send();
+        }
+        return res.status(200).send();
+      });
+    }
   });
+
 });
 
 module.exports = router;

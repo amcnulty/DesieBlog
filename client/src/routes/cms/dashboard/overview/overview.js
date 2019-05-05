@@ -38,7 +38,7 @@ class Overview extends Component {
   render() {
     return (
       <div className="Overview my-4">
-        <h1>Welome to your dashboard {this.props.user.data.displayName}!</h1>
+        <h1>Welome to your dashboard {this.props.user.displayName}!</h1>
         <Row>
           <Col md="6">
             <h3 className="text-center">Articles</h3>
