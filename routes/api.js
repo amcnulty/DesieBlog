@@ -115,17 +115,6 @@ router.get('/articles', (req, res) => {
   }
 });
 
-router.get('/update-all-articles', (req, res) => {
-  Article.update({}, {authorId: '5c315886af7ce70017077e5d'}, {multi: true}, (err, raw) => {
-    if (err) {
-      console.log(err);
-      return res.status(500).send();
-    }
-    console.log(raw);
-    return res.status(200).send();
-  });
-});
-
 router.get('/user-articles', (req, res) => {
   if (!req.session.user) {
     return res.status(401).send();
