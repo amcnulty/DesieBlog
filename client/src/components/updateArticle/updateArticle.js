@@ -22,17 +22,32 @@ class UpdateArticle extends Component {
 
   loadArticles = () => {
     this.setState({articlesLoaded: false});
-    API.getArticlesByKind(this.props.articleData.kind, (err, articles) => {
-      if (err) {
-        console.log(err);
-      }
-      else {
-        this.setState({
-          articles: articles.data.reverse(),
-          articlesLoaded: true
-        });
-      }
-    });
+    if (this.props.articleAuthor.isAdmin) {
+      API.getArticlesByKind(this.props.articleData.kind, (err, articles) => {
+        if (err) {
+          console.log(err);
+        }
+        else {
+          this.setState({
+            articles: articles.data.reverse(),
+            articlesLoaded: true
+          });
+        }
+      });
+    }
+    else {
+      API.getArticlesByKindForUser(this.props.articleData.kind, (err, articles) => {
+        if (err) {
+          console.log(err);
+        }
+        else {
+          this.setState({
+            articles: articles.data.reverse(),
+            articlesLoaded: true
+          });
+        }
+      });
+    }
   }
 
   handleArticleSelect = id => {

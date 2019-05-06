@@ -66,7 +66,8 @@ class ArticleEditor extends Component {
       wine: API.createWineArticle
     }
     const req = {};
-    req.author = this.props.articleAuthor;
+    req.author = this.props.articleAuthor.displayName;
+    req.authorId = this.props.articleAuthor._id;
     this.props.articleData.fields.forEach(field => {
       req[field.name] = this.state[field.value];
     });
@@ -79,7 +80,8 @@ class ArticleEditor extends Component {
 
   getArticleData = () => {
     const data = {};
-    data.author = this.props.articleAuthor;
+    data.author = this.props.articleAuthor.displayName;
+    data.authorId = this.props.articleAuthor._id;
     this.props.articleData.fields.forEach(field => {
       data[field.name] = this.state[field.value];
     });

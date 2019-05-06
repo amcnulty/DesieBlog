@@ -12,14 +12,15 @@ const ManageBooks = props => {
       <DashboardTabView>
         <ArticleEditor
           mode="create"
-          articleAuthor={props.user.displayName}
+          articleAuthor={props.user}
           articleData={articleData.Books}
         />
         <UpdateArticle
-          articleAuthor={props.user.displayName}
+          articleAuthor={props.user}
           articleData={articleData.Books}
         />
         <DeleteArticle
+          articleAuthor={props.user}
           kind="Book"
         />
       </DashboardTabView>

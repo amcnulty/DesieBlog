@@ -57,6 +57,20 @@ export const API = {
    });
  },
  /**
+  * Gets all the articles of the specified kind for the currently logged in user.
+  * @param kind Book | Travel | Recipe| Wine the kind which is mapped to the Mongoose schema for the article type.
+  * @param callback Callback method with the api response.
+  */
+ getArticlesByKindForUser: (kind, callback) => {
+   axios.get(localHost + `/api/user-articles?kind=${kind}`, config)
+   .then(res => {
+     callback(null, res);
+   })
+   .catch(err => {
+     callback(err, err);
+   });
+ },
+ /**
   * Finds articles that are before and after the given record in the database.\
   * @param record The article record to reference when finding adjacent matches.
   * @param callback Callback method with the api response.

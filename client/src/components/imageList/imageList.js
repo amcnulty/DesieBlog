@@ -70,6 +70,7 @@ class ImageList extends Component {
                   return (
                     <div className="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2 my-3" key={image.public_id}>
                       <ImageListItem
+                        user={this.props.user}
                         image={image}
                         showCopyToast={this.showCopyToast}
                         showDeleteToast={this.showDeleteToast}

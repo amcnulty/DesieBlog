@@ -4,6 +4,7 @@ const options = { discriminatorKey: 'kind' };
 
 const articleSchema = mongoose.Schema({
   author: String,
+  authorId: String,
   title: String,
   urlTitle: String,
   path: String,

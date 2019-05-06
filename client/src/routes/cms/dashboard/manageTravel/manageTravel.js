@@ -12,14 +12,15 @@ const ManageTravel = props => {
       <DashboardTabView>
         <ArticleEditor
           mode="create"
-          articleAuthor={props.user.displayName}
+          articleAuthor={props.user}
           articleData={articleData.Travel}
         />
         <UpdateArticle
-          articleAuthor={props.user.displayName}
+          articleAuthor={props.user}
           articleData={articleData.Travel}
         />
         <DeleteArticle
+          articleAuthor={props.user}
           kind="Travel"
         />
       </DashboardTabView>

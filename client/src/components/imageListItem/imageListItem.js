@@ -59,16 +59,22 @@ class ImageListItem extends Component {
                 Copy Url
               </Tooltip>
             </button>
-            <button type="button" className="btn btn-link text-white" onClick={this.deleteImage}>
-              <i id={`${this.props.image.public_id}deleteTooltip`} className="fas fa-trash-alt"></i>
-              <Tooltip
-                target={`${this.props.image.public_id}deleteTooltip`}
-                isOpen={this.state.deleteTooltipOpen}
-                toggle={() => this.toggle('deleteTooltipOpen')}
-              >
-                Delete Image
-              </Tooltip>
-            </button>
+            {
+              this.props.user.isAdmin
+              ?
+              <button type="button" className="btn btn-link text-white" onClick={this.deleteImage}>
+                <i id={`${this.props.image.public_id}deleteTooltip`} className="fas fa-trash-alt"></i>
+                <Tooltip
+                  target={`${this.props.image.public_id}deleteTooltip`}
+                  isOpen={this.state.deleteTooltipOpen}
+                  toggle={() => this.toggle('deleteTooltipOpen')}
+                >
+                  Delete Image
+                </Tooltip>
+              </button>
+              :
+              null
+            }
           </div>
         </div>
         <input id="copyInput"></input>

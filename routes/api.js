@@ -115,6 +115,36 @@ router.get('/articles', (req, res) => {
   }
 });
 
+router.get('/update-all-articles', (req, res) => {
+  Article.update({}, {authorId: '5c315886af7ce70017077e5d'}, {multi: true}, (err, raw) => {
+    if (err) {
+      console.log(err);
+      return res.status(500).send();
+    }
+    console.log(raw);
+    return res.status(200).send();
+  });
+});
+
+router.get('/user-articles', (req, res) => {
+  if (!req.session.user) {
+    return res.status(401).send();
+  }
+  else {
+    Article.find({
+      kind: req.query.kind,
+      authorId: req.session.user._id
+    }, (err, articles) => {
+      if (err) {
+        console.log(err);
+        return res.status(500).send();
+      }
+      if (!articles) return res.status(404).send();
+      return res.status(200).send(articles);
+    });
+  }
+});
+
 router.post('/articles/adjacent', (req, res) => {
   const adjacentArticles = {
     previous: {},
@@ -199,26 +229,62 @@ router.put('/article/update-article/:id', (req, res) => {
   if (!req.session.user) {
     return res.status(401).send();
   }
-  Article.findByIdAndUpdate(req.params.id, req.body, (err, article) => {
-    if (err) {
-      console.log(err);
-      return res.status(500).send();
-    }
-    return res.status(200).send();
-  });
+  if (req.session.user.isAdmin) {
+    Article.findByIdAndUpdate(req.params.id, req.body, (err, article) => {
+      if (err) {
+        console.log(err);
+        return res.status(500).send();
+      }
+      return res.status(200).send();
+    });
+  }
+  else {
+    Article.find({_id: req.params.id, authorId: req.session.user._id}, (err, article) => {
+      if (err) {
+        console.log(err);
+        return res.status(500).send();
+      }
+      if (!article) return res.status(404).send();
+      Article.findByIdAndUpdate(req.params.id, req.body, (err, article) => {
+        if (err) {
+          console.log(err);
+          return res.status(500).send();
+        }
+        return res.status(200).send();
+      });
+    });
+  }
 });
 
 router.delete('/article/:id', (req, res) => {
   if (!req.session.user) {
     return res.status(401).send();
   }
-  Article.findByIdAndDelete(req.params.id, (err, article) => {
-    if (err) {
-      console.log(err);
-      return res.status(500).send();
-    }
-    return res.status(200).send();
-  });
+  if (req.session.user.isAdmin) {
+    Article.findByIdAndDelete(req.params.id, (err, article) => {
+      if (err) {
+        console.log(err);
+        return res.status(500).send();
+      }
+      return res.status(200).send();
+    });
+  }
+  else {
+    Article.find({_id: req.params.id, authorId: req.session.user._id}, (err, article) => {
+      if (err) {
+        console.log(err);
+        return res.status(500).send();
+      }
+      if (!article) return res.status(404).send();
+      Article.findByIdAndDelete(req.params.id, (err, article) => {
+        if (err) {
+          console.log(err);
+          return res.status(500).send();
+        }
+        return res.status(200).send();
+      });
+    });
+  }
 });
 
 router.post('/books/create-article', (req, res) => {
@@ -252,6 +318,9 @@ router.post('/recipes/create-article', (req, res) => {
 });
 
 router.post('/travel/create-article', (req, res) => {
+  if (!req.session.user) {
+    return res.status(401).send();
+  }
   const newTravelArticle = new TravelArticle(req.body);
 
   newTravelArticle.save(err => {
@@ -264,60 +333,12 @@ router.post('/travel/create-article', (req, res) => {
 });
 
 router.post('/wine/create-article', (req, res) => {
+  if (!req.session.user) {
+    return res.status(401).send();
+  }
   const newWineArticle = new WineArticle(req.body);
 
   newWineArticle.save(err => {
-    if (err) {
-      console.log(err);
-      return res.status(500).send();
-    }
-    return res.status(200).send();
-  });
-});
-
-router.post('/books', (req, res) => {
-  BookArticle.insertMany([
-    {
-      title: 'Moby Dick',
-      urlTitle: 'moby-dick',
-      authors: ['Herman Melville'],
-      path: '/books/moby-dick',
-      thumbnailImage: 'https://images-na.ssl-images-amazon.com/images/I/41VnFKC9srL.jpg',
-      bannerText: 'My review on Moby Dick.',
-      bookImage: 'https://images-na.ssl-images-amazon.com/images/I/41VnFKC9srL.jpg',
-      body: '<p>Lorem ipsum dolor sit, amet <em>consectetur adipisicing elit.</em> Nesciunt quis similique quos <b>voluptatum</b>, corrupti repellat vero magni asperiores. Sit doloremque expedita commodi repudiandae animi laborum! Nihil iusto in optio aut.</p><p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Et hic animi voluptatum ad nulla magni modi quam fuga sed delectus autem <b>distinctio</b>, <em>est numquam.</em> Animi non sed similique nihil officia voluptas numquam veniam ea amet voluptates, eos <a href="https://www.google.com">possimus consequuntur</a> quae, odit placeat earum, a pariatur. <b>Tenetur error</b> veniam illo esse, facere dolores dolor sunt consectetur <em>illum id soluta aperiam?</em> Libero.</p>'
-    },
-    {
-      title: 'Principia Mathematica',
-      urlTitle: 'principia-mathematica',
-      authors: ['Alfred North Whitehead', 'Bertrand Russell'],
-      path: '/books/principia-mathematica',
-      thumbnailImage: 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/17/Prinicipia-title.png/220px-Prinicipia-title.png',
-      bannerText: 'Why you should read Principia Mathematica.',
-      bookImage: 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/17/Prinicipia-title.png/220px-Prinicipia-title.png',
-      body: '<p>Lorem ipsum dolor sit, amet <em>consectetur adipisicing elit.</em> Nesciunt quis similique quos <b>voluptatum</b>, corrupti repellat vero magni asperiores. Sit doloremque expedita commodi repudiandae animi laborum! Nihil iusto in optio aut.</p><p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Et hic animi voluptatum ad nulla magni modi quam fuga sed delectus autem <b>distinctio</b>, <em>est numquam.</em> Animi non sed similique nihil officia voluptas numquam veniam ea amet voluptates, eos <a href="https://www.google.com">possimus consequuntur</a> quae, odit placeat earum, a pariatur. <b>Tenetur error</b> veniam illo esse, facere dolores dolor sunt consectetur <em>illum id soluta aperiam?</em> Libero.</p>'
-    }
-  ], (err, articles) => {
-    if (err) {
-      console.log(err);
-      return res.status(500).send();
-    }
-    return res.status(200).send();
-  });
-});
-
-router.post('/wine', (req, res) => {
-  WineArticle.insertMany([
-    {
-      title: 'Delicious Cabernets',
-      urlTitle: 'delicious-cabernets',
-      path: '/wine/delicious-cabernets',
-      thumbnailImage: 'https://www.winespotswines.com/images/cabernet-sauvignon-800x1005-3.jpg',
-      bannerText: 'How to pick the best Cabernet Sauvignon.',
-      variety: 'Cabernet Sauvingnon',
-      body: '<p>Lorem ipsum dolor sit, amet <em>consectetur adipisicing elit.</em> Nesciunt quis similique quos <b>voluptatum</b>, corrupti repellat vero magni asperiores. Sit doloremque expedita commodi repudiandae animi laborum! Nihil iusto in optio aut.</p><p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Et hic animi voluptatum ad nulla magni modi quam fuga sed delectus autem <b>distinctio</b>, <em>est numquam.</em> Animi non sed similique nihil officia voluptas numquam veniam ea amet voluptates, eos <a href="https://www.google.com">possimus consequuntur</a> quae, odit placeat earum, a pariatur. <b>Tenetur error</b> veniam illo esse, facere dolores dolor sunt consectetur <em>illum id soluta aperiam?</em> Libero.</p>'
-    }
-  ], (err, articles) => {
     if (err) {
       console.log(err);
       return res.status(500).send();
@@ -366,7 +387,7 @@ router.get('/images/usage', (req, res) => {
 });
 
 router.delete('/images/:id', (req, res) => {
-  if (!req.session.user) {
+  if (!req.session.user || !req.session.user.isAdmin) {
     return res.status(401).send();
   }
   axios.delete(`https://${process.env.API_KEY}:${process.env.API_SECRET}@api.cloudinary.com/v1_1/${process.env.CLOUD_NAME}/resources/image/upload?public_ids[]=${req.params.id}`)
