@@ -3,28 +3,34 @@
   bottom: 0;
   right: 0;
   left: 0;
-  color: #F9F6ED;
+  color: #FFFFFF;
   height: 80px;
   line-height: 80px;
   background-color: #8A9E9C; }
-  .SiteFooter .subscribe {
-    display: flex; }
-    .SiteFooter .subscribe input {
-      font-family: inherit;
-      height: 30px; }
-    .SiteFooter .subscribe button {
-      height: 24px;
-      background-color: #C18264; }
-    .SiteFooter .subscribe .mobileFooter {
-      height: 80px; }
-    .SiteFooter .subscribe .subscribeButton {
-      font-size: 24px;
-      color: #F9F6ED; }
-  .SiteFooter #subscribeForm button {
-    font-family: inherit;
-    height: 30px;
-    border: none;
-    cursor: pointer; }
+
+.SiteFooter .subscribe {
+  display: flex; }
+
+.SiteFooter .subscribe input {
+  font-family: inherit;
+  height: 30px; }
+
+.SiteFooter .subscribe button {
+  height: 24px;
+  background-color: #C18264; }
+
+.SiteFooter .subscribe .mobileFooter {
+  height: 80px; }
+
+.SiteFooter .subscribe .subscribeButton {
+  font-size: 24px;
+  color: #FFFFFF; }
+
+.SiteFooter #subscribeForm button {
+  font-family: inherit;
+  height: 30px;
+  border: none;
+  cursor: pointer; }
 
 #subscribeForm {
   display: flex;

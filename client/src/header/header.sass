@@ -6,27 +6,21 @@
   left: 0
   right: 0
   z-index: 10
-  background-color: rgba($backgroundColor, .95)
-
-  .desieBlogLogo
-    position: absolute
-    transform: translateX(-50%)
-    left: 50%
+  background-image: url("/res/images/background/polaroid.png")
 
   .navbar-collapse
     z-index: 10
     
+    
+  .pintrestIcon
+    font-size: 24px
+    color: $labelText
+
   .nav-item
-    a
+    .nav-link
+      font-weight: bold
       text-decoration: none
       margin: 0px 16px 0px 16px
-      padding: 8px 0px 8px 0px !important
-      color: $textColor
-      border-bottom: 2px solid $headerUnderlineColor
-      &.active
-        border-bottom: 2px solid $thumbnailBannerBackgroundColor
-
-  @media (max-width: 767px)
-    .navbar-collapse
-      background-color: $backgroundColor
+      color: $labelText
+      opacity: 1
 
