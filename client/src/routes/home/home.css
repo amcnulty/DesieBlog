@@ -1,54 +1,15 @@
-.Home .thumbnail-row {
-  display: flex;
-  justify-content: space-between; }
+.Home .logoWrapper {
+  max-width: 400px; }
 
-.Home .thumbnail {
+.Home .homePicture {
+  max-width: 1000px; }
+
+.Home .aboutBox {
   position: relative;
-  display: block;
-  max-width: 400px;
-  height: 400px;
-  background-size: cover;
-  box-shadow: 10px 10px 8px 0px #9ba6aa;
-  cursor: pointer;
-  transition: .3s ease; }
+  top: -137.5px;
+  max-width: 750px;
+  height: 275px;
+  background-image: url("/res/images/background/sprinkle.png"); }
 
-.Home .thumbnail.recipes {
-  background: url("http://res.cloudinary.com/dz54puaeo/image/upload/v1549742472/d4ma8x2aptfwbo6rsujt.jpg"); }
-
-.Home .thumbnail.wine {
-  background: url("http://res.cloudinary.com/dz54puaeo/image/upload/v1549742509/jahvtorzyccro1tizrob.jpg"); }
-
-.Home .thumbnail.travel {
-  background: url("http://res.cloudinary.com/dz54puaeo/image/upload/v1549742553/aw0qtuukfmmrgtlpdvrq.jpg"); }
-
-.Home .thumbnail.books {
-  background: url("http://res.cloudinary.com/dz54puaeo/image/upload/v1549742584/zvcnb8hvs8ocvllvwscb.jpg"); }
-
-.Home .thumbnail:hover {
-  transform: scale(1.05);
-  box-shadow: 15px 15px 8px 0px #9ba6aa; }
-
-.Home .thumbnail-banner {
-  position: absolute;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 20%;
-  background-color: #C18264;
-  opacity: .95;
-  color: #F9F6ED;
-  font-size: 70px;
-  font-weight: bold; }
-
-.Home footer {
-  padding: 30px 0px 30px 0px;
-  margin-top: 30px;
-  margin-bottom: -10px;
-  text-align: center;
-  background: #8A9E9C; }
-
-.Home footer a {
-  color: #efeee7; }
+.Home .aboutBox .aboutBlurb {
+  line-height: initial; }
