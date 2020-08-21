@@ -43,14 +43,14 @@ Included in the repo is a file named *example.env* which is an example of the *.
 
 |Key          |Type       |Description|
 | ------------|-----------|-----------|
-|MONGODB_URI  |URI String |This is used to connect to your mongo database.|
+|DB_URI  |URI String |This is used to connect to your mongo database.|
 |secretKey    |String     |Any random string that will be used for hashing passwords to the database.|
 |NODE_ENV     |String 'development' or 'production'|This must be set to 'development' when working locally. This is set to production for the live version.|
 |PORT         |Number     |The port on which to run the server. This should be set to something other than 3000. 3005 is a good option!|
 
 Your .env file should look something like this once created.
 ```
-MONGODB_URI=mongodb://localhost:27017/desieblog
+DB_URI=mongodb://localhost:27017/desieblog
 secretKey=my random string of text
 NODE_ENV=development
 PORT=3005
